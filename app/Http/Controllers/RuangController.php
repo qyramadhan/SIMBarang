@@ -19,7 +19,6 @@ class RuangController extends Controller
     {
         $this->ruang        = new RuangModel();
         $this->lantai       = new LantaiModel();
-        $this->gedung       = new GedungModel();
     }
 
     public function index()
@@ -32,7 +31,6 @@ class RuangController extends Controller
     {
         $data['ruang']    = $this->ruang->getRuang();
         $data['lantai']   = $this->lantai->getLantai();
-        $data['gedung']   = $this->gedung->getGedung();
         return view('ruang.create', $data);
     }
 
@@ -42,7 +40,6 @@ class RuangController extends Controller
             'kode_ruang'    => 'required',
             'nama_ruang'    => 'required',
             'nama_lantai'   => 'required',
-            'nama_gedung'   => 'required',
         ]);
 
         try {
@@ -71,7 +68,6 @@ class RuangController extends Controller
     {
         $data['ruang']         = $this->ruang->getRuang($id_ruang);
         $data['lantai']        = $this->lantai->getLantai();
-        $data['gedung']        = $this->gedung->getGedung();
         return view('ruang.edit',$data);
     }
 

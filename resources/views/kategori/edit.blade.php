@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Data Kategori</h1>
+                    <h1 class="page-title">Kategori Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/ruang')}}">Manage Kategori</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kategori</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/ruang')}}">Management Kategori Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Kategori Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,18 +29,18 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Edit Data Kategori</h5>
+                                <h5 class="card-title">Edit Kategori Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                          <ul>
-                             @foreach ($errors->all() as $error)
-                               <li>{{ $error }}</li>
-                             @endforeach
-                          </ul>
+                            <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                         @endif
                         <div class="card-body">
@@ -51,7 +51,7 @@
                                         <label class="mg-b-0 tx-semibold">Kode Kategori</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="kode_kategori" class="form-control" placeholder="Name" value="{{ $kategori->kode_kategori }}"> 
+                                        <input type="text" name="kode_kategori" class="form-control" placeholder="Kode Kategori" value="{{ $kategori->kode_kategori }}"> 
                                     </div>
                                 </div>
 
@@ -60,7 +60,7 @@
                                         <label class="mg-b-0 tx-semibold">Nama Kategori</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_kategori" class="form-control" placeholder="Name" value="{{ $kategori->nama_kategori }}">
+                                        <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Kategori" value="{{ $kategori->nama_kategori }}">
                                     </div>
                                 </div>
 
@@ -106,8 +106,8 @@
                                     <div class="col-md-9">
                                         @csrf
                                         <input type="hidden" value="{{ $kategori->id_kategori }}" name="id_kategori">
-                                        <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/kategori') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/kategori') }}">Kembali</a>
                                     </div>
                                     </div>
                                 </div>

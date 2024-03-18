@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Data Golongan</h1>
+                    <h1 class="page-title">Golongan</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/golongan')}}">Manage Golongan</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/golongan')}}">Management Golongan</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Golongan</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Edit Data Golongan</h5>
+                                <h5 class="card-title">Edit Golongan</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                          <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                           <ul>
                              @foreach ($errors->all() as $error)
                                <li>{{ $error }}</li>
@@ -51,7 +51,7 @@
                                         <label class="mg-b-0 tx-semibold">Kode Golongan</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="kode_golongan" class="form-control" placeholder="Name" value="{{ $golongan->kode_golongan }}"> 
+                                        <input type="text" name="kode_golongan" class="form-control" placeholder="Kode Golongan" value="{{ $golongan->kode_golongan }}"> 
                                     </div>
                                 </div>
 
@@ -60,7 +60,7 @@
                                         <label class="mg-b-0 tx-semibold">Nama Golongan</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_golongan" class="form-control" placeholder="Name" value="{{ $golongan->nama_golongan }}">
+                                        <input type="text" name="nama_golongan" class="form-control" placeholder="Nama Golongan" value="{{ $golongan->nama_golongan }}">
                                     </div>
                                 </div>
 
@@ -68,8 +68,8 @@
                                     <div class="col-md-9">
                                         @csrf
                                         <input type="hidden" value="{{ $golongan ->id_golongan }}" name="id_golongan">
-                                        <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/golongan') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/golongan') }}">Kembali</a>
                                     </div>
                                     </div>
                                 </div>

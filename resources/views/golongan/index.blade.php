@@ -14,7 +14,7 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Management Golongan</h1>
+                    <h1 class="page-title">Golongan</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Management Golongan</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Golongan</li>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="ms-auto pageheader-btn">
                     @can('role-create')
-                    <a href="{{ url('golongan/create') }}" class="btn btn-secondary btn-icon text-white">
+                    <a href="{{ url('golongan/create') }}" class="btn btn-secondary btn-icon text-white btn-sm">
                         <span>
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
@@ -71,9 +71,9 @@
                                             <td>{{ $value->nama_golongan }}</td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary"
+                                                <a class="btn btn-primary btn-sm"
                                                     href="{{ url('golongan/edit',$value->id_golongan) }}"><i class="fa fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_golongan }}"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_golongan }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -100,7 +100,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -108,8 +108,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_golongan" id="id_golongan_delete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     @csrf
                 </div>
             </div>

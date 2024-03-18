@@ -56,10 +56,10 @@ class GolonganController extends Controller
     {
         try {
             $this->golongan->update_golongan($request);
-            Session::flash('success','Golongan berhasil di ubah');
+            Session::flash('success','Golongan berhasil di update');
             return redirect('/golongan');
         } catch (\Throwable $th) {
-            Session::flash('failed','Golongan gagal di ubah');
+            Session::flash('failed','Golongan gagal di update');
             return redirect('/golongan');
         }
     }

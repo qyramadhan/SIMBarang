@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Tambah Barang Baru</h1>
+                    <h1 class="page-title">Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/barang')}}">Manage Barang</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Barang Baru</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/barang')}}">Management Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Tambah Barang Baru</h5>
+                                <h5 class="card-title">Tambah Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                                 <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -60,7 +60,7 @@
                                     <div class="col-md-3">
                                         <label class="mg-b-0 tx-semibold">Tanggal Pembelian</label>
                                     </div>
-                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                    <div class="col-md-2 mg-t-5 mg-md-t-0">
                                         <input type="date" name="tgl_pembelian" class="form-control" placeholder="Tanggal Pembelian">
                                     </div>
                                 </div>
@@ -81,8 +81,8 @@
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
-                                        <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/barang') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/barang') }}">Kembali</a>
                                     </div>
                                 </div>
                             </div>

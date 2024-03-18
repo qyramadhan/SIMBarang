@@ -13,21 +13,21 @@
         </div>
 
         <div class="main-sidemenu">
-            <div class="slide-left disabled" id="slide-left">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+            <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
-                </svg>
-            </div>
+                </svg></div>
                 <ul class="side-menu">
                     <li>
-                        <h3 class="sub-category">Dashboard</h3>
+                        <div class="mt-6">
+                            <h3 class="sub-category">Dashboard</h3>
+                        </div>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="\home">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="side-menu__icon" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22" />
                             </svg>
-                            <span class="side-menu__label">Menu Dashboard</span><i class="angle fe fe-chevron-right"></i>
+                            <span class="side-menu__label">Menu Dashboard</span>
                         </a>
                     </li>
 
@@ -96,7 +96,7 @@
                             <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10Z"/>
                             </svg>
-                            <span class="side-menu__label">Setting</span><i class="angle fe fe-chevron-right"></i>
+                            <span class="side-menu__label">Setting</span>
                         </a>
                     </li> 
                     <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"width="24" height="24" viewBox="0 0 24 24">

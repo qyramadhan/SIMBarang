@@ -14,9 +14,9 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Tambah Pengaturan</h1>
+                    <h1 class="page-title">Pengaturan</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/setting')}}">Manage Pengaturan</a></li>
+                        <li class="breadcrumb-item"><a href="{{url ('/setting')}}">Management Pengaturan</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tambah Pengaturan</li>
                     </ol>
                 </div>
@@ -35,7 +35,7 @@
 
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                                 <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -52,7 +52,7 @@
                                         <label class="mg-b-0 tx-semibold">Nama Orang</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_orang" class="form-control" placeholder="Name"> 
+                                        <input type="text" name="nama_orang" class="form-control" placeholder="Nama Orang"> 
                                     </div>
                                 </div>
                         
@@ -61,15 +61,15 @@
                                         <label class="mg-b-0 tx-semibold">Posisi/Jabatan</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="posisi" class="form-control" placeholder="Posisi">
+                                        <input type="text" name="posisi" class="form-control" placeholder="Posisi/Jabatan">
                                     </div>
                                 </div>
                         
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
-                                        <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/setting') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/setting') }}">Kembali</a>
                                     </div>
                                 </div>
                             </div>

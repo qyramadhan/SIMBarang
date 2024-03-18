@@ -17,7 +17,6 @@ class SettingModel extends Model
             $sv                 = new SettingModel();
             $sv->nama_orang     = $request->nama_orang;
             $sv->posisi         = $request->posisi;
-            $sv->id_atasan      = $request->id_atasan;
             $sv->soft_delete    = FALSE;
             $sv->log_user1      = Auth::user()->id;
             $sv->log_user2      = Auth::user()->id;

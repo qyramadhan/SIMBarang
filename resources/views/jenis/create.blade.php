@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inventory - Tambah Jenis Baru')
+@section('title', 'Inventory - Tambah Jenis Barang')
 
 @section('content')
 
@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Tambah Jenis Baru</h1>
+                    <h1 class="page-title">Jenis Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/jenis')}}">Manage Jenis</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Jenis Baru</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/jenis')}}">Management Jenis Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Jenis Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Tambah Jenis Baru</h5>
+                                <h5 class="card-title">Tambah Jenis Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                                 <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -81,8 +81,8 @@
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
-                                        <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/jenis') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/jenis') }}">Kembali</a>
                                     </div>
                                 </div>
                             </div>

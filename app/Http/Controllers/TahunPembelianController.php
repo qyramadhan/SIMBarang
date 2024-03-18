@@ -55,10 +55,10 @@ class TahunPembelianController extends Controller
     {
         try {
             $this->tahunpembelian->update_tahun($request);
-            Session::flash('success','Tahun Pembelian berhasil di ubah');
+            Session::flash('success','Tahun Pembelian berhasil di update');
             return redirect('/tahun');
         } catch (\Throwable $th) {
-            Session::flash('failed','Tahun Pembelian gagal di ubah');
+            Session::flash('failed','Tahun Pembelian gagal di update');
             return redirect('/tahun');
         }
     }

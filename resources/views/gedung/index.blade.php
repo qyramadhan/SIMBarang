@@ -14,7 +14,7 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Management Gedung</h1>
+                    <h1 class="page-title">Gedung</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Management Gedung</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Gedung</li>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="ms-auto pageheader-btn">
                     @can('role-create')
-                    <a href="{{ url('gedung/create') }}" class="btn btn-secondary btn-icon text-white">
+                    <a href="{{ url('gedung/create') }}" class="btn btn-secondary btn-icon text-white btn-sm">
                         <span>
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
@@ -72,9 +72,9 @@
                                             <td>{{ $value->nama_gedung }}</td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary"
+                                                <a class="btn btn-primary btn-sm"
                                                     href="{{ url('gedung/edit',$value->id_gedung) }}"><i class="fa fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_gedung }}"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_gedung }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -109,8 +109,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_gedung" id="id_gedung_delete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     @csrf
                 </div>
             </div>

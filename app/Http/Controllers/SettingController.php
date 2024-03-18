@@ -33,7 +33,6 @@ class SettingController extends Controller
         $this->validate($request, [
             'nama_orang'    => 'required',
             'posisi'        => 'required',
-            'id_atasan'     => 'required',
 
         ]);
 
@@ -57,10 +56,10 @@ class SettingController extends Controller
     {
         try {
             $this->setting->update_setting($request);
-            Session::flash('success','Setting berhasil di ubah');
+            Session::flash('success','Setting berhasil di update');
             return redirect('/setting');
         } catch (\Throwable $th) {
-            Session::flash('failed','Setting gagal di ubah');
+            Session::flash('failed','Setting gagal di update');
             return redirect('/setting');
         }
     }

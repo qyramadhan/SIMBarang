@@ -55,10 +55,10 @@ class AnggaranController extends Controller
     {
         try {
             $this->anggaran->update_anggaran($request);
-            Session::flash('success','Sumber Anggaran berhasil di ubah');
+            Session::flash('success','Sumber Anggaran berhasil di update');
             return redirect('/anggaran');
         } catch (\Throwable $th) {
-            Session::flash('failed','Sumber Anggaran gagal di ubah');
+            Session::flash('failed','Sumber Anggaran gagal di update');
             return redirect('/anggaran');
         }
     }

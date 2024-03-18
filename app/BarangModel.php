@@ -15,7 +15,7 @@ class BarangModel extends Model
         try {
             $sv                         = new BarangModel();
             $sv->nama_barang            = $request->nama_barang;
-            $sv->id_kategori            = $request->id_kategori;
+            $sv->id_kategori            = $request->nama_kategori;
             $sv->tgl_pembelian          = $request->tgl_pembelian;
             $sv->soft_delete            = FALSE;
             $sv->log_user1              = Auth::user()->id;

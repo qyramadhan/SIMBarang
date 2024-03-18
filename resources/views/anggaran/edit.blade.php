@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inventory - Edit Data Sumber Anggaran')
+@section('title', 'Inventory - Edit Sumber Anggaran')
 
 @section('content')
 
@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Data Sumber Anggaran</h1>
+                    <h1 class="page-title">Sumber Anggaran</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/anggaran')}}">Manage Sumber Anggaran</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/anggaran')}}">Management Sumber Anggaran</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Sumber Anggaran</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Edit Data Sumber Anggaran</h5>
+                                <h5 class="card-title">Edit Sumber Anggaran</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                          <strong>Upps!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                           <ul>
                              @foreach ($errors->all() as $error)
                                <li>{{ $error }}</li>
@@ -51,7 +51,7 @@
                                         <label class="mg-b-0 tx-semibold">Kode Sumber Anggaran</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="kode_anggaran" class="form-control" placeholder="Name" value="{{ $anggaran->kode_anggaran }}"> 
+                                        <input type="text" name="kode_anggaran" class="form-control" placeholder="Kode Sumber Anggaran" value="{{ $anggaran->kode_anggaran }}"> 
                                     </div>
                                 </div>
 
@@ -60,14 +60,14 @@
                                         <label class="mg-b-0 tx-semibold">Nama Sumber Anggaran</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_anggaran" class="form-control" placeholder="Name" value="{{ $anggaran->nama_anggaran }}">
+                                        <input type="text" name="nama_anggaran" class="form-control" placeholder="Nama Sumber Anggaran" value="{{ $anggaran->nama_anggaran }}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
-                                        <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/anggaran') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Submit</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/anggaran') }}">Kembali</a>
                                     </div>
                                     </div>
                                 </div>

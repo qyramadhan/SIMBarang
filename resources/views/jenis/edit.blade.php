@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Data Jenis Barang</h1>
+                    <h1 class="page-title">Jenis Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/jenis')}}">Manage Jenis Barang</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/jenis')}}">Management Jenis Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Jenis Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Edit Data Jenis Barang</h5>
+                                <h5 class="card-title">Edit Jenis Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                          <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                           <ul>
                              @foreach ($errors->all() as $error)
                                <li>{{ $error }}</li>
@@ -44,7 +44,6 @@
                         </div>
                         @endif
                         <div class="card-body">
-                        
 
                             <div class="form-content">
                                 <form action="{{ url('jenis/update') }}" method="POST">
@@ -53,7 +52,7 @@
                                         <label class="mg-b-0 tx-semibold">Kode Jenis Barang</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="kode_jenis" class="form-control" placeholder="Name" value="{{ $jenis->kode_jenis }}"> 
+                                        <input type="text" name="kode_jenis" class="form-control" placeholder="Kode Jenis Barang" value="{{ $jenis->kode_jenis }}"> 
                                     </div>
                                 </div>
 
@@ -62,7 +61,7 @@
                                         <label class="mg-b-0 tx-semibold">Nama Jenis Barang</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_jenis" class="form-control" placeholder="Name" value="{{ $jenis->nama_jenis }}">
+                                        <input type="text" name="nama_jenis" class="form-control" placeholder="Nama Jenis Barang" value="{{ $jenis->nama_jenis }}">
                                     </div>
                                 </div>
 
@@ -88,8 +87,8 @@
                                     <div class="col-md-9">
                                         @csrf
                                         <input type="hidden" value="{{ $jenis->id_jenis }}" name="id_jenis">
-                                        <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/jenis') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/jenis') }}">Kembali</a>
                                     </div>
                                     </div>
                                 </div>

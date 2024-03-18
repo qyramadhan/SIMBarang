@@ -57,10 +57,10 @@ class GedungController extends Controller
     {
         try {
             $this->gedung->update_gedung($request);
-            Session::flash('success','Gedung berhasil di ubah');
+            Session::flash('success','Gedung berhasil di update');
             return redirect('/gedung');
         } catch (\Throwable $th) {
-            Session::flash('failed','Gedung gagal di ubah');
+            Session::flash('failed','Gedung gagal di update');
             return redirect('/gedung');
         }
     }

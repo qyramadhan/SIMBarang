@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inventory - Tambah Gedung Baru')
+@section('title', 'Inventory - Tambah Gedung')
 
 @section('content')
 
@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Tambah Gedung Baru</h1>
+                    <h1 class="page-title">Gedung</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/gedung')}}">Manage Users</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Gedung Baru</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/gedung')}}">Management Gedung</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Gedung</li>
                     </ol>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Tambah Gedung Baru</h5>
+                                <h5 class="card-title">Tambah Gedung</h5>
                             </div>
                         </div>
 
@@ -52,7 +52,7 @@
                                         <label class="mg-b-0 tx-semibold">Kode Gedung</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="kode_gedung" class="form-control" placeholder="Name"> 
+                                        <input type="text" name="kode_gedung" class="form-control" placeholder="Kode Gedung"> 
                                     </div>
                                 </div>
                         
@@ -61,15 +61,15 @@
                                         <label class="mg-b-0 tx-semibold">Nama Gedung</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_gedung" class="form-control" placeholder="Name">
+                                        <input type="text" name="nama_gedung" class="form-control" placeholder="Nama Gedung">
                                     </div>
                                 </div>
                         
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
-                                        <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/gedung') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/gedung') }}">Kembali</a>
                                     </div>
                                 </div>
                             </div>

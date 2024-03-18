@@ -31,15 +31,15 @@
 										<div class="dropdown profile-1 d-flex">
 											<a href="javascript:void(0);" data-bs-toggle="dropdown"
 												class="nav-link icon leading-none d-flex">
-												<img src="../assets/images/users/4.jpg" alt="profile-user"
+												<img src="../assets/images/users/user.png" alt="profile-user"
 													class="avatar profile-user brround cover-image">
 											</a>
 											<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 												<a class="dropdown-item" href="profile.html">
-													<i class="dropdown-icon mdi mdi-account-outline"></i> My Profile
+													<i class="dropdown-icon mdi mdi-account-outline"></i> Profil
 												</a>
 												<a class="dropdown-item" href="{{ url('logout')}}">
-													<i class="dropdown-icon mdi mdi-logout-variant"></i> Sign out
+													<i class="dropdown-icon mdi mdi-logout-variant"></i> Keluar
 												</a>
 											</div>
 										</div>

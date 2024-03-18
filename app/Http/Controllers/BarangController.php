@@ -9,6 +9,7 @@ use App\GolonganModel;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Carbon\Carbon;
 
 class BarangController extends Controller
 {
@@ -27,6 +28,9 @@ class BarangController extends Controller
 
     public function index ()
     {
+        $date = date('Y-m-d H:i:s');
+        $newDate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m/d/Y');
+        
         $data['barang'] = $this->barang->getBarang();
         return view('barang.index',$data);
     }
@@ -45,7 +49,7 @@ class BarangController extends Controller
         $this->validate ($request, [
             'nama_barang'       => 'required',
             'tgl_pembelian'     => 'required',
-            'id_kategori'       => 'required',
+            'nama_kategori'     => 'required',
         ]);
 
         try {

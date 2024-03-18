@@ -14,7 +14,7 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Management Ruang</h1>
+                    <h1 class="page-title">Ruang</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Management Ruang</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Ruang</li>
@@ -22,12 +22,12 @@
                 </div>
                 <div class="ms-auto pageheader-btn">
                     @can('role-create')
-                    <a href="{{ url('ruang/create') }}" class="btn btn-secondary btn-icon text-white">
+                    <a href="{{ url('ruang/create') }}" class="btn btn-secondary btn-icon text-white btn-sm">
                         <span>
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
                     </a>
-                    <a href="{{ url('ruang/cetak') }}" target="_blank" class="btn btn-success btn-icon text-white">
+                    <a href="{{ url('ruang/cetak') }}" target="_blank" class="btn btn-success btn-icon text-white btn-sm">
                         <span>
                             <i class="fa fa-print"></i>
                         </span> Cetak Data
@@ -77,9 +77,8 @@
                                             <td>{{ $value->nama_lantai }}</td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary"
-                                                    href="{{ url('ruang/edit',$value->id_ruang) }}"><i class="fa fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_ruang }}"><i class="fa fa-trash"></i></button>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('ruang/edit',$value->id_ruang) }}"><i class="fa fa-edit"></i></a>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_ruang }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -106,7 +105,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -114,8 +113,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_ruang" id="id_ruang_delete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     @csrf
                 </div>
             </div>
