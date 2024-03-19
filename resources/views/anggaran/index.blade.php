@@ -32,11 +32,11 @@
             </div>
 
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+            <div class="mb-3 alert alert-success">
                 <p>{{ $message }}</p>
             </div>
             @elseif ($message = Session::get('failed'))
-            <div class="alert alert-warning">
+            <div class="mb-3 alert alert-warning">
                 <p>{{ $message }}</p>
             </div>
             @endif

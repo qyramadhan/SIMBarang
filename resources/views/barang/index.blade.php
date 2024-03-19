@@ -74,7 +74,7 @@
                                         <tr>
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $value->nama_barang }}</td>
-                                            <td>{{ $value->tgl_pembelian }}</td>
+                                            <td>{{ $value->tgl_pembelian }} </td>
                                             <td>{{ $value->nama_kategori }}</td>
                                             </td>
                                             <td>

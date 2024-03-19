@@ -70,15 +70,15 @@
                                         <label class="mg-b-0 tx-semibold">Nama Golongan</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <select class="form-control" name="id_golongan">
-                                            @foreach ($golongan as $v)
+                                        <select class="form-control" name="nama_golongan">
+                                            @foreach ($golongan as $item)
                                                 @php
-                                                    $statusA = "";
-                                                    if($v->id_golongan == $jenis->nama_golongan){
-                                                        $statusA = "selected";
+                                                    $selected = "";
+                                                    if($item->id_golongan == $jenis->id_golongan){
+                                                        $selected = "selected";
                                                     }
                                                 @endphp
-                                                <option value="{{ $v->id_golongan }}" {{ $statusA }}>{{ $v->nama_golongan }}</option>
+                                                <option value="{{ $item->id_golongan }}" {{ $selected }}>{{ $item->nama_golongan }}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -37,7 +37,7 @@ class JenisController extends Controller
         $this->validate ($request, [
             'kode_jenis'    => 'required',
             'nama_jenis'    => 'required',
-            'nama_golongan' => 'required',
+            'id_golongan'   => 'required',
         ]);
 
         try {

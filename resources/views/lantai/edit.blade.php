@@ -70,14 +70,14 @@
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <select class="form-control" name="nama_gedung">
-                                            @foreach ($gedung as $v)
+                                            @foreach ($gedung as $item)
                                                 @php
-                                                    $statusA = "";
-                                                    if($v->id_gedung == $lantai->nama_gedung){
-                                                        $statusA = "selected";
+                                                    $selected = "";
+                                                    if($item->id_gedung == $lantai->id_gedung){
+                                                        $selected = "selected";
                                                     }
                                                 @endphp
-                                                <option value="{{ $v->id_gedung }}" {{ $statusA }}>{{ $v->nama_gedung }}</option>
+                                                <option value="{{ $item->id_gedung }}" {{ $selected }}>{{ $item->nama_gedung }}</option>
                                             @endforeach
                                         </select>
                                     </div>

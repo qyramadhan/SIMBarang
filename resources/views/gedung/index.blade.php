@@ -32,11 +32,11 @@
             </div>
 
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+            <div class="mb-3 alert alert-success">
                 <p>{{ $message }}</p>
             </div>
             @elseif ($message = Session::get('failed'))
-            <div class="alert alert-warning">
+            <div class="mb-3 alert alert-warning">
                 <p>{{ $message }}</p>
             </div>
             @endif
@@ -72,8 +72,7 @@
                                             <td>{{ $value->nama_gedung }}</td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary btn-sm"
-                                                    href="{{ url('gedung/edit',$value->id_gedung) }}"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('gedung/edit',$value->id_gedung) }}"><i class="fa fa-edit"></i></a>
                                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_gedung }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>

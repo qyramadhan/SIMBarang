@@ -69,11 +69,11 @@
                                         <label class="mg-b-0 tx-semibold">Nama Kategori</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <select class="form-control" name="id_kategori">
+                                        <select class="form-control" name="nama_kategori">
                                             @foreach ($kategori as $v)
                                                 @php
                                                     $statusA = "";
-                                                    if($v->id_kategori == $barang->nama_kategori){
+                                                    if($v->id_kategori == $barang->id_kategori){
                                                         $statusA = "selected";
                                                     }
                                                 @endphp

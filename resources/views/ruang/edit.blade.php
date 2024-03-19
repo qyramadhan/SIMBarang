@@ -73,7 +73,7 @@
                                             @foreach ($lantai as $v)
                                                 @php
                                                     $statusA = "";
-                                                    if($v->id_lantai == $ruang->nama_lantai){
+                                                    if($v->id_lantai == $ruang->id_lantai){
                                                         $statusA = "selected";
                                                     }
                                                 @endphp

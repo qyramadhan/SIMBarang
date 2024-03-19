@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
@@ -72,7 +73,7 @@ class BarangModel extends Model
             BarangModel::where('id_barang',$request->id_barang)
             ->update([
                 "nama_barang"            => $request->nama_barang,
-                "id_kategori"            => $request->id_kategori,
+                "id_kategori"            => $request->nama_kategori,
                 "tgl_pembelian"          => $request->tgl_pembelian,
                 "log_user2"              => Auth::user()->id,
                 "last_action"            => 2,

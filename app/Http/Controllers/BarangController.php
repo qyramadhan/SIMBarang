@@ -6,10 +6,10 @@ use App\BarangModel;
 use App\KategoriModel;
 use App\JenisModel;
 use App\GolonganModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use Session;
-use Carbon\Carbon;
 
 class BarangController extends Controller
 {
@@ -28,9 +28,7 @@ class BarangController extends Controller
 
     public function index ()
     {
-        $date = date('Y-m-d H:i:s');
-        $newDate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m/d/Y');
-        
+        Carbon::parse('2019-03-01')->translatedFormat('d F Y');
         $data['barang'] = $this->barang->getBarang();
         return view('barang.index',$data);
     }

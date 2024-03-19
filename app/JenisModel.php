@@ -67,7 +67,7 @@ class JenisModel extends Model
             ->update([
                 "kode_jenis"           => $request->kode_jenis,
                 "nama_jenis"           => $request->nama_jenis,
-                "id_golongan"          => $request->id_golongan,
+                "id_golongan"          => $request->nama_golongan,
                 "log_user2"            => Auth::user()->id,
                 "last_action"          => 2,
             ]);

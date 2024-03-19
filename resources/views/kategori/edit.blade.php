@@ -73,7 +73,7 @@
                                             @foreach ($jenis as $v)
                                                 @php
                                                     $statusA = "";
-                                                    if($v->id_jenis == $kategori->nama_jenis){
+                                                    if($v->id_jenis == $kategori->id_jenis){
                                                         $statusA = "selected";
                                                     }
                                                 @endphp

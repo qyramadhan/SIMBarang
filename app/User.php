@@ -38,9 +38,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getCreatedAtAtribute()
-    {
-        return \Carbon\Carbon::parse($this->attributes['updated-at'])->diffForHumans();
-    }
 }
