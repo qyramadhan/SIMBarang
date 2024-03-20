@@ -64,6 +64,15 @@
                                         <input type="text" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
                                     </div>
                                 </div>
+
+                                <div class="row row-xs align-items-center mb-4">
+                                    <div class="col-md-3">
+                                        <label class="mg-b-0 tx-semibold">Username:</label>
+                                    </div>
+                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                        <input type="text" name="email" class="form-control" placeholder="Username" value="{{ $user->username }}">
+                                    </div>
+                                </div>
                         
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">

@@ -10,6 +10,7 @@ class BarangModel extends Model
 {
     protected $table    = "tb_barang";
     public $timestamps  = true;
+    protected $dates = ['tgl_pembelian'];
 
     public function save_barang($request)
     {
@@ -17,7 +18,7 @@ class BarangModel extends Model
             $sv                         = new BarangModel();
             $sv->nama_barang            = $request->nama_barang;
             $sv->id_kategori            = $request->nama_kategori;
-            $sv->tgl_pembelian          = $request->tgl_pembelian;
+            $sv->tgl_pembelian          = $request->tgl_pembelian->translatedFormat('d F Y');
             $sv->soft_delete            = FALSE;
             $sv->log_user1              = Auth::user()->id;
             $sv->log_user2              = Auth::user()->id;
@@ -74,7 +75,7 @@ class BarangModel extends Model
             ->update([
                 "nama_barang"            => $request->nama_barang,
                 "id_kategori"            => $request->nama_kategori,
-                "tgl_pembelian"          => $request->tgl_pembelian,
+                "tgl_pembelian"          => $request->tgl_pembelian->translatedFormat('d F Y'),
                 "log_user2"              => Auth::user()->id,
                 "last_action"            => 2,
             ]);

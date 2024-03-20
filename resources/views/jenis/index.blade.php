@@ -14,7 +14,7 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Management Jenis Barang</h1>
+                    <h1 class="page-title">Jenis Barang</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Management Jenis Barang</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Jenis Barang</li>

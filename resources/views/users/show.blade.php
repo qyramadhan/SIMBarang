@@ -14,9 +14,9 @@
 			<!-- PAGE-HEADER -->
 			<div class="page-header">
 				<div>
-					<h1 class="page-title">Detail Users</h1>
+					<h1 class="page-title">Users</h1>
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="{{ route('users.index') }}">Manage Users</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('users.index') }}">Management Users</a></li>
 						<li class="breadcrumb-item active" aria-current="page">Detail Users</li>
 					</ol>
 				</div>
@@ -96,6 +96,12 @@
 													</div>
 													<div class="col-md-9 mg-t-5 mg-md-t-0">
 														<p class="mb-0 text-muted">{{ $user->email }}</p>
+													</div>
+													<div class="col-md-3">
+														<label class="mg-b-0 tx-semibold">Username</label>
+													</div>
+													<div class="col-md-9 mg-t-5 mg-md-t-0">
+														<p class="mb-0 text-muted">{{ $user->username }}</p>
 													</div>
 												</div>
 											</div>

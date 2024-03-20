@@ -52,4 +52,9 @@ class LoginController extends Controller
 
         return redirect()->route('register');
     }
+
+    public function username()
+    {
+        return 'username';
+    }
 }

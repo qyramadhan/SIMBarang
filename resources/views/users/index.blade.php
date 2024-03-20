@@ -59,6 +59,7 @@
                                             <th class="wd-15p">No</th>
                                             <th class="wd-15p">Name</th>
                                             <th class="wd-15p">E-mail</th>
+                                            <th class="wd-15p">Username</th>
                                             <th class="wd-15p">Roles</th>
                                             <th class="wd-20p">Action</th>
                                         </tr>
@@ -70,6 +71,7 @@
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td>{{ $user->username }}</td>
                                             <td>
                                                 @if(!empty($user->getRoleNames()))
                                                 @foreach($user->getRoleNames() as $v)
