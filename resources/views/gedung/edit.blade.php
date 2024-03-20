@@ -16,7 +16,7 @@
                 <div>
                     <h1 class="page-title">Gedung</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/gedung')}}">Management Gedung</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url ('/gedung') }}">Management Gedung</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Gedung</li>
                     </ol>
                 </div>
