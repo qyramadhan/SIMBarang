@@ -14,7 +14,7 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Management Kartu Barang</h1>
+                    <h1 class="page-title">Kartu Barang</h1>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0);">Management Kartu Barang</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Kartu Barang</li>
@@ -22,15 +22,15 @@
                 </div>
                 <div class="ms-auto pageheader-btn">
                     @can('role-create')
-                    <a href="{{ url('kartu/create') }}" class="btn btn-secondary btn-icon text-white">
+                    <a href="{{ url('kartu/create') }}" class="btn btn-secondary btn-icon text-white btn-sm">
                         <span>
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
                     </a>
 
-                    <a href="{{ url('kartu/cetak') }}" class="btn btn-secondary btn-icon text-white">
+                    <a href="{{ url('kartu/cetak') }}" class="btn btn-success btn-icon text-white btn-sm">
                         <span>
-                            <i class="fa fa-plus"></i>
+                            <i class="fa fa-print"></i>
                         </span> Cetak Data
                     </a>
                     @endcan
@@ -38,11 +38,11 @@
             </div>
 
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+            <div class="mb-3 alert alert-success">
                 <p>{{ $message }}</p>
             </div>
             @elseif ($message = Session::get('failed'))
-            <div class="alert alert-warning">
+            <div class="mb-3 alert alert-warning">
                 <p>{{ $message }}</p>
             </div>
             @endif
@@ -77,8 +77,8 @@
                                             <td>{{ $value->keterangan }}</td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary" href="{{ url('kartu/edit',$value->id_kartu) }}"><i class="fa fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_kartu }}"><i class="fa fa-trash"></i></button>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('kartu/edit',$value->id_kartu) }}"><i class="fa fa-edit"></i></a>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_kartu }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -105,7 +105,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -113,8 +113,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_kartu" id="id_kartu_delete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     @csrf
                 </div>
             </div>

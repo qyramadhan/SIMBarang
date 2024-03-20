@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Data Detail Kartu Barang</h1>
+                    <h1 class="page-title">Edit Detail Kartu Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/detail')}}">Manage Detail Kartu Barang</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/detail')}}">Management Detail Kartu Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Detail Kartu Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Edit Data Detail Kartu Barang</h5>
+                                <h5 class="card-title">Edit Detail Kartu Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <div class="mb-3 alert alert-danger">
+                          <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                           <ul>
                              @foreach ($errors->all() as $error)
                                <li>{{ $error }}</li>
@@ -55,7 +55,7 @@
                                                 @foreach ($detail as $v)
                                                     @php
                                                         $statusA = "";
-                                                        if($v->id_ruang == $ruang->nama_ruang){
+                                                        if($v->id_ruang == $ruang->id_ruang){
                                                             $statusA = "selected";
                                                         }
                                                     @endphp
@@ -95,8 +95,8 @@
                                         <div class="col-md-9">
                                             @csrf
                                             <input type="hidden" value="{{ $detail->id_detailkartu }}" name="id_detail">
-                                            <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                            <a class="btn ripple btn-secondary" href="{{ url('/detail') }}">Kembali</a>
+                                            <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                            <a class="btn ripple btn-secondary btn-sm" href="{{ url('/detail') }}">Kembali</a>
                                         </div>
                                     </div>
                                 </div>

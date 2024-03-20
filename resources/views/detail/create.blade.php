@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Tambah Detail Kartu Barang Baru</h1>
+                    <h1 class="page-title">Tambah Detail Kartu Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/detail')}}">Manage Detail Kartu Barang</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Detail Kartu Barang Baru</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/detail')}}">Management Detail Kartu Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Detail Kartu Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,13 +29,13 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Tambah Detail Kartu Barang Baru</h5>
+                                <h5 class="card-title">Tambah Detail Kartu Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                                 <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -52,9 +52,9 @@
                                         <label class="mg-b-0 tx-semibold">Nama Ruang</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <select class="form-control form-select select2" name="id_ruang">
+                                        <select class="form-control form-select select2" name="nama_ruang">
                                          @foreach ($detail as $value)
-                                             <option value="{{ $value->id_ruang }}">{{ $value->nama_ruang }}</option>
+                                             <option value="{{ $value->id_ruang }}">{{ $ruang->nama_ruang }}</option>
                                          @endforeach
                                         </select>
                                      </div>
@@ -90,8 +90,8 @@
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
-                                        <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/detail') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/detail') }}">Kembali</a>
                                     </div>
                                 </div>
                             </div>

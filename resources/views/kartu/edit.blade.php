@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Data Kartu Barang</h1>
+                    <h1 class="page-title">Edit Kartu Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/kartu')}}">Manage Kartu Barang</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item"><a href="{{url ('/kartu')}}">Management Kartu Barang</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Kartu Barang</li>
                     </ol>
                 </div>
             </div>
@@ -29,12 +29,12 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Edit Data Kartu Barang</h5>
+                                <h5 class="card-title">Edit Kartu Barang</h5>
                             </div>
                         </div>
 
                         @if (count($errors) > 0)
-                        <div class="alert alert-danger">
+                        <div class="mb-3 alert alert-danger">
                           <strong>Whoops!</strong> There were some problems with your input.<br><br>
                           <ul>
                              @foreach ($errors->all() as $error)
@@ -55,7 +55,7 @@
                                             @foreach ($ruang as $v)
                                                 @php
                                                     $statusA = "";
-                                                    if($v->id_ruang == $kartu->nama_ruang){
+                                                    if($v->id_ruang == $kartu->id_ruang){
                                                         $statusA = "selected";
                                                     }
                                                 @endphp
@@ -78,8 +78,8 @@
                                     <div class="col-md-9">
                                         @csrf
                                         <input type="hidden" value="{{ $kartu->id_kartu }}" name="id_kartu">
-                                        <button type="submit" class="btn ripple btn-primary">Simpan</button>
-                                        <a class="btn ripple btn-secondary" href="{{ url('/kartu') }}">Kembali</a>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                        <a class="btn ripple btn-secondary btn-sm" href="{{ url('/kartu') }}">Kembali</a>
                                     </div>
                                     </div>
                                 </div>

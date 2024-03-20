@@ -32,11 +32,11 @@
             </div>
 
             @if ($message = Session::get('success'))
-            <div class="alert alert-success">
+            <div class="mb-3 alert alert-success">
                 <p>{{ $message }}</p>
             </div>
             @elseif ($message = Session::get('failed'))
-            <div class="alert alert-warning">
+            <div class="mb-3 alert alert-warning">
                 <p>{{ $message }}</p>
             </div>
             @endif
@@ -75,9 +75,8 @@
                                             <td>{{ $value->keterangan }}</td>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary"
-                                                    href="{{ url('detail/edit',$value->id_detailkartu) }}"><i class="fa fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('detail/edit',$value->id_detailkartu) }}"><i class="fa fa-edit"></i></a>
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -104,7 +103,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal">
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -112,8 +111,8 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_detail" id="id_detail_delete">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     @csrf
                 </div>
             </div>
