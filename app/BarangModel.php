@@ -18,7 +18,7 @@ class BarangModel extends Model
             $sv                         = new BarangModel();
             $sv->nama_barang            = $request->nama_barang;
             $sv->id_kategori            = $request->nama_kategori;
-            $sv->tgl_pembelian          = $request->tgl_pembelian->translatedFormat('d F Y');
+            $sv->tgl_pembelian          = $request->tgl_pembelian;
             $sv->soft_delete            = FALSE;
             $sv->log_user1              = Auth::user()->id;
             $sv->log_user2              = Auth::user()->id;
@@ -75,7 +75,7 @@ class BarangModel extends Model
             ->update([
                 "nama_barang"            => $request->nama_barang,
                 "id_kategori"            => $request->nama_kategori,
-                "tgl_pembelian"          => $request->tgl_pembelian->translatedFormat('d F Y'),
+                "tgl_pembelian"          => $request->tgl_pembelian,
                 "log_user2"              => Auth::user()->id,
                 "last_action"            => 2,
             ]);

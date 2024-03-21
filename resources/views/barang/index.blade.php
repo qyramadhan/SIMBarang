@@ -37,7 +37,7 @@
             </div>
 
             @if ($message = Session::get('success'))
-            <div class="mb-3 alert alert-success">
+            <div class="col-md-12 col-md-offset-12 mb-3 alert alert-success">
                 <p>{{ $message }}</p>
             </div>
             @elseif ($message = Session::get('failed'))
@@ -74,7 +74,7 @@
                                         <tr>
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $value->nama_barang }}</td>
-                                            <td>{{ $value->tgl_pembelian->translatedFormat('d F Y')}} </td>
+                                            <td>{{ $value->tgl_pembelian->translatedFormat('d-m-Y')}} </td>
                                             <td>{{ $value->nama_kategori }}</td>
                                             </td>
                                             <td>

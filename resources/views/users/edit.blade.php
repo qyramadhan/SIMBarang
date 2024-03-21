@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Users</h1>
+                    <h1 class="page-title">Users</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route ('users.index')}}">Manage Users</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                        <li class="breadcrumb-item"><a href="{{route ('users.index')}}">Management Users</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Users</li>
                     </ol>
                 </div>
             </div>
@@ -46,10 +46,10 @@
 
                         <div class="card-body">
                             <div class="form-content">
-                                <form action="{{ route('users.update', $user->id) }}" method="POST">
+                                <form action="{{ route('users.update', $user->id) }}">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Name:</label>
+                                        <label class="mg-b-0 tx-semibold">Name</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <input type="text" name="name" class="form-control" placeholder="Name" value="{{ $user->name }}"> 
@@ -58,7 +58,7 @@
                         
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Email:</label>
+                                        <label class="mg-b-0 tx-semibold">Email</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <input type="text" name="email" class="form-control" placeholder="Email" value="{{ $user->email }}">
@@ -67,7 +67,7 @@
 
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Username:</label>
+                                        <label class="mg-b-0 tx-semibold">Username</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <input type="text" name="email" class="form-control" placeholder="Username" value="{{ $user->username }}">
@@ -76,7 +76,7 @@
                         
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Password:</label>
+                                        <label class="mg-b-0 tx-semibold">Password</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <input type="password" name="password" class="form-control" placeholder="Password">
@@ -85,7 +85,7 @@
                         
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Confirm Password:</label>
+                                        <label class="mg-b-0 tx-semibold">Confirm Password</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <input type="password" name="confirm-password" class="form-control" placeholder="Konfirmasi Password">
@@ -94,7 +94,7 @@
                         
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Role:</label>
+                                        <label class="mg-b-0 tx-semibold">Role</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                         <select class="form-control" name="roles[]">
@@ -105,8 +105,8 @@
                                     </div>
                                     <div class="form-group row justify-content-end mb-0 mt-5">
                                         <div class="col-md-9">
-                                            <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                            <a class="btn ripple btn-secondary" href="{{ route('users.index') }}">Kembali</a>
+                                            <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                            <a class="btn ripple btn-secondary btn-sm" href="{{ route('users.index') }}">Kembali</a>
                                         </div>
                                     </div>
                                 </div>

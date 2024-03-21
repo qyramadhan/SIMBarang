@@ -14,9 +14,9 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Edit Roles</h1>
+                    <h1 class="page-title">Roles</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route ('roles.index')}}">Manage Roles</a></li>
+                        <li class="breadcrumb-item"><a href="{{route ('roles.index')}}">Management Roles</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Roles</li>
                     </ol>
                 </div>
@@ -66,8 +66,8 @@
                                             @endforeach
                                             <div class="form-group row mt-3">
                                                 <div class="col-md-9">
-                                                    <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                                    <a class="btn ripple btn-secondary" href="{{ route('roles.index') }}">Kembali</a>
+                                                    <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                                    <a class="btn ripple btn-secondary btn-sm" href="{{ route('roles.index') }}">Kembali</a>
                                                 </div>
                                             </div>
                                         </div>

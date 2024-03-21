@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inventory - Buat Users Baru')
+@section('title', 'Inventory - Tambah Users')
 
 @section('content')
 
@@ -14,10 +14,10 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Buat Users Baru</h1>
+                    <h1 class="page-title">Users</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route ('roles.index')}}">Manage Users</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Buat Users Baru</li>
+                        <li class="breadcrumb-item"><a href="{{route ('roles.index')}}">Management Users</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Users</li>
                     </ol>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card custom-card">
                         <div class="card-header">
                             <div>
-                                <h5 class="card-title">Buat Users Baru</h5>
+                                <h5 class="card-title">Tambah Users</h5>
                             </div>
                         </div>
 
@@ -104,8 +104,8 @@
                                     </select>
                                     <div class="form-group row mb-0 mt-5">
                                         <div class="col-md-9">
-                                            <button type="submit" class="btn ripple btn-primary">Submit</button>
-                                            <a class="btn ripple btn-secondary" href="{{ route('users.index') }}">Kembali</a>
+                                            <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                            <a class="btn ripple btn-secondary btn-sm" href="{{ route('users.index') }}">Kembali</a>
                                         </div>
                                     </div> 
                                 </div>

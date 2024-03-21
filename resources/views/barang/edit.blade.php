@@ -60,7 +60,7 @@
                                         <label class="mg-b-0 tx-semibold">Tanggal Pembelian</label>
                                     </div>
                                     <div class="col-md-2 mg-t-5 mg-md-t-0">
-                                        <input type="date" name="tgl_pembelian" class="form-control" value="{{ $barang->tgl_pembelian->translatedFormat('d F Y') }}">
+                                        <input type="date" name="tgl_pembelian" class="form-control" value="{{ date('Y-m-d', strtotime($barang->tgl_pembelian)) }}">
                                     </div>
                                 </div>
 

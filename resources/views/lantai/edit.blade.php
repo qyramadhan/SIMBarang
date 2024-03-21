@@ -35,12 +35,12 @@
 
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                          <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
-                          <ul>
-                             @foreach ($errors->all() as $error)
+                            <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
                                <li>{{ $error }}</li>
-                             @endforeach
-                          </ul>
+                                @endforeach
+                            </ul>
                         </div>
                         @endif
                         <div class="card-body">

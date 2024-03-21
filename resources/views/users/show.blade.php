@@ -106,7 +106,7 @@
 												</div>
 											</div>
 									<div class="card-body">
-										<a class="btn ripple btn-secondary" href="{{ route('users.index') }}">Kembali</a>
+										<a class="btn ripple btn-secondary btn-sm" href="{{ route('users.index') }}">Kembali</a>
 									</div>
 								</div>
 							</div>

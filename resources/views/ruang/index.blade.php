@@ -35,18 +35,16 @@
                     @endcan
                 </div>
             </div>
-
-            @if ($message = Session::get('success'))
-            <div class="mb-3 alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-            @elseif ($message = Session::get('failed'))
-            <div class="mb-3 alert alert-warning">
-                <p>{{ $message }}</p>
-            </div>
-            @endif
-            
         </div>
+        @if ($message = Session::get('success'))
+        <div class="mb-3 alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @elseif ($message = Session::get('failed'))
+        <div class="mb-3 alert alert-warning">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
             <!-- PAGE-HEADER END -->
 
             <!-- ROW-1 OPEN -->

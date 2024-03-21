@@ -26,7 +26,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
-
+    
     Route::post('/user/delete', 'UserController@deleteUser');
     Route::post('/roles/delete', 'RoleController@deleteRole');
 });

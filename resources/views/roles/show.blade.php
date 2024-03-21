@@ -14,9 +14,9 @@
 			<!-- PAGE-HEADER -->
 			<div class="page-header">
 				<div>
-					<h1 class="page-title">Detail Roles</h1>
+					<h1 class="page-title">Roles</h1>
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Manage Roles</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Management Roles</a></li>
 						<li class="breadcrumb-item active" aria-current="page">Detail Roles</li>
 					</ol>
 				</div>
@@ -55,7 +55,7 @@
 											</div>
 										</div>
 										<div>
-											<a class="btn ripple btn-secondary" href="{{ route('roles.index') }}">Kembali</a>
+											<a class="btn ripple btn-secondary btn-sm" href="{{ route('roles.index') }}">Kembali</a>
 										</div>
 									</div>
 								</div>
