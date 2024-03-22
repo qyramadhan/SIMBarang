@@ -46,9 +46,10 @@ class AnggaranModel extends Model
             AnggaranModel::where('id_anggaran',$id)
             ->update([
                 "soft_delete"   => TRUE,
-                "log_user1"     => Auth::user()->id,
+                "log_user2"     => Auth::user()->id,
                 "last_action"   => 3,
             ]);
+            return TRUE;
         } catch (\Throwable $th) {
             return FALSE;
         }
@@ -57,11 +58,11 @@ class AnggaranModel extends Model
     public function update_anggaran($request)
     {
         try {
-            GolonganModel::where('id_anggaran',$request->id_anggaran)
+            AnggaranModel::where('id_anggaran',$request->id_anggaran)
             ->update([
                 'kode_anggaran'     => $request->kode_anggaran,
                 'nama_anggaran'     => $request->nama_anggaran,
-                'log_user1'         => Auth::user()->id,
+                'log_user2'         => Auth::user()->id,
                 'last_action'       => 2,
             ]);
             return TRUE;

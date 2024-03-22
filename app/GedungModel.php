@@ -46,7 +46,7 @@ class GedungModel extends Model
             GedungModel::where('id_gedung',$id)
             ->update([
                 "soft_delete"   => TRUE,
-                "log_user2"      => Auth::user()->id,
+                "log_user2"     => Auth::user()->id,
                 "last_action"   => 3,
             ]);
             return TRUE;

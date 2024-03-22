@@ -103,7 +103,7 @@
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah anda yakin untuk menghapus data?.</p>
+                    <p>Apakah anda yakin untuk menghapus data?</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_lantai" id="id_lantai_delete">

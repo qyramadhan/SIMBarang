@@ -54,11 +54,23 @@ class TahunPembelianController extends Controller
     public function update(Request $request)
     {
         try {
-            $this->tahunpembelian->update_tahun($request);
+            $this->tahunpembelian->update_tahun($request->id_tahun);
             Session::flash('success','Tahun Pembelian berhasil di update');
             return redirect('/tahun');
         } catch (\Throwable $th) {
             Session::flash('failed','Tahun Pembelian gagal di update');
+            return redirect('/tahun');
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        try {
+            $this->tahunpembelian->delete_tahun($request);
+            Session::flash('success','Tahun Pembelian berhasil di hapus');
+            return redirect('/tahun');
+        } catch (\Throwable $th) {
+            Session::flash('failed','Tahun Pembelian gagal di hapus');
             return redirect('/tahun');
         }
     }

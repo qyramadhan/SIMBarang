@@ -62,4 +62,16 @@ class AnggaranController extends Controller
             return redirect('/anggaran');
         }
     }
+
+    public function delete(Request $request)
+    {
+        try {
+            $this->anggaran->delete_anggaran($request->id_anggaran);
+            Session::flash('success','Sumber Anggaran berhasil di hapus');
+            return redirect('/anggaran');
+        } catch (\Throwable $th) {
+            Session::flash('failed','Sumber Anggaran gagal di hapus');
+            return redirect('/anggaran');
+        }
+    }
 }

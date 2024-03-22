@@ -18,7 +18,7 @@ class LantaiModel extends Model
             $sv                         = new LantaiModel();
             $sv->kode_lantai            = $request->kode_lantai;
             $sv->nama_lantai            = $request->nama_lantai;
-            $sv->id_gedung              = $request->nama_gedung;
+            $sv->id_gedung              = $request->id_gedung;
             $sv->soft_delete            = FALSE;
             $sv->log_user1              = Auth::user()->id;
             $sv->log_user2              = Auth::user()->id;

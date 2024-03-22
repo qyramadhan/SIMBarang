@@ -45,7 +45,7 @@ class TahunPembelianModel extends Model
             TahunPembelianModel::where('id_tahun',$id)
             ->update([
                 "soft_delete"   => TRUE,
-                "log_user"      => Auth::user()->id,
+                "log_user2"     => Auth::user()->id,
                 "last_action"   => 3,
             ]);
             return TRUE;

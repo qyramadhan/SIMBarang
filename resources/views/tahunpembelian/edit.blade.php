@@ -22,7 +22,16 @@
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-
+            @if (count($errors) > 0)
+                <div class="mb-3 alert alert-danger">
+                    <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- ROW-1 OPEN -->
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -33,19 +42,9 @@
                             </div>
                         </div>
 
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                          <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
-                          <ul>
-                             @foreach ($errors->all() as $error)
-                               <li>{{ $error }}</li>
-                             @endforeach
-                          </ul>
-                        </div>
-                        @endif
                         <div class="card-body">
                             <div class="form-content">
-                                <form action="{{ url('tahun/update', $tahunpembelian->id) }}" method="POST">
+                                <form action="{{ url('tahun/update') }}" method="POST">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
                                         <label class="mg-b-0 tx-semibold">Tahun Pembelian</label>
@@ -57,6 +56,8 @@
 
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
+                                        @csrf
+                                        <input type="hidden" value="{{ $tahunpembelian->id_tahun}}" name="id_tahun">
                                         <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
                                         <a class="btn ripple btn-secondary btn-sm" href="{{ url('/tahun') }}">Kembali</a>
                                     </div>

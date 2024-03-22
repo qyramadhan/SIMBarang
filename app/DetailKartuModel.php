@@ -15,7 +15,7 @@ class DetailKartuModel extends Model
     {
         try {
             $sv                 = new DetailKartuModel();
-            $sv->id_ruang       = $request->nama_ruang;
+            $sv->id_ruang       = $request->id_ruang;
             $sv->jumlah_barang  = $request->jumlah_barang;
             $sv->kondisi_barang = $request->kondisi_barang;
             $sv->soft_delete    = FALSE;
