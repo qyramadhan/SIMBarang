@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2024 at 03:20 AM
+-- Generation Time: Mar 22, 2024 at 08:40 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.22
 
@@ -260,7 +260,8 @@ CREATE TABLE `tb_barang` (
 INSERT INTO `tb_barang` (`id_barang`, `nama_barang`, `id_kategori`, `tgl_pembelian`, `created_at`, `updated_at`, `soft_delete`, `log_user1`, `log_user2`, `last_action`) VALUES
 (1, 'Kursi Lipat', 1, '2024-03-17', '2024-02-28 19:19:20', '2024-03-21 03:37:50', 0, 1, 1, 2),
 (2, 'Kursi Duduk', 1, '2024-03-02', '2024-02-28 19:27:52', '2024-03-21 03:42:49', 0, 1, 1, 2),
-(3, 'Jam Dinding', 2, '2024-03-21', '2024-03-20 03:51:41', '2024-03-21 03:53:56', 0, 1, 1, 2);
+(3, 'Jam Dinding', 2, '2024-03-21', '2024-03-20 03:51:41', '2024-03-21 03:53:56', 0, 1, 1, 2),
+(4, 'Kursi Pijat', 1, '2024-03-22', '2024-03-22 02:46:02', '2024-03-22 02:46:02', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -366,7 +367,8 @@ INSERT INTO `tb_jenis` (`id_jenis`, `kode_jenis`, `nama_jenis`, `id_golongan`, `
 (3, '003', 'Meja Kantor', 1, '2024-02-21 20:38:26', '2024-03-20 07:17:36', 0, 1, 1, 2),
 (4, '004', 'Monitor Komputer', 2, '2024-02-21 20:39:18', '2024-03-20 03:39:41', 0, 1, 1, 2),
 (5, '005', 'PC Lab', 1, '2024-02-21 20:44:38', '2024-02-27 02:35:04', 0, 1, 1, 1),
-(6, '006', 'Printer Lab', 1, '2024-02-21 21:10:14', '2024-02-27 01:07:45', 0, 1, 1, 2);
+(6, '006', 'Printer Lab', 1, '2024-02-21 21:10:14', '2024-02-27 01:07:45', 0, 1, 1, 2),
+(7, '007', 'Keyboard Gaming', 1, '2024-03-22 02:56:07', '2024-03-22 02:56:07', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -419,7 +421,8 @@ CREATE TABLE `tb_kategori` (
 
 INSERT INTO `tb_kategori` (`id_kategori`, `kode_kategori`, `nama_kategori`, `id_jenis`, `created_at`, `updated_at`, `soft_delete`, `log_user1`, `log_user2`, `last_action`) VALUES
 (1, '01', 'Baik', 4, '2024-02-26 20:07:01', '2024-02-28 23:35:14', 0, 1, 1, 2),
-(2, '02', 'Kurang Baik', 5, '2024-02-27 01:19:36', '2024-02-27 01:19:36', 0, 1, 1, 1);
+(2, '02', 'Kurang Baik', 5, '2024-02-27 01:19:36', '2024-02-27 01:19:36', 0, 1, 1, 1),
+(3, '03', 'Rusak', 6, '2024-03-22 02:44:49', '2024-03-22 02:44:49', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -447,7 +450,8 @@ CREATE TABLE `tb_lantai` (
 INSERT INTO `tb_lantai` (`id_lantai`, `kode_lantai`, `nama_lantai`, `id_gedung`, `created_at`, `updated_at`, `soft_delete`, `log_user1`, `log_user2`, `last_action`) VALUES
 (1, '001', 'Lantai 1', 2, '2024-02-20 19:55:58', '2024-03-21 07:41:39', 0, 1, 1, 2),
 (2, '002', 'Lantai 2', 2, '2024-02-20 19:56:20', '2024-02-27 00:53:37', 1, 1, 1, 3),
-(3, '002', 'Lantai 2', 4, '2024-02-28 23:53:41', '2024-03-21 06:28:22', 0, 1, 1, 2);
+(3, '002', 'Lantai 2', 4, '2024-02-28 23:53:41', '2024-03-21 06:28:22', 0, 1, 1, 2),
+(4, '003', 'Lantai 3', 4, '2024-03-22 02:30:21', '2024-03-22 02:32:15', 0, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -474,7 +478,8 @@ CREATE TABLE `tb_ruangan` (
 
 INSERT INTO `tb_ruangan` (`id_ruang`, `kode_ruang`, `nama_ruang`, `id_lantai`, `created_at`, `updated_at`, `soft_delete`, `log_user1`, `log_user2`, `last_action`) VALUES
 (1, '01', 'Ruang Belajar', 1, '2024-02-26 20:17:04', '2024-02-26 20:17:04', 0, 1, 1, 1),
-(2, '02', 'Ruang Praktek', 3, '2024-02-26 20:21:31', '2024-03-04 20:23:26', 0, 1, 1, 2);
+(2, '02', 'Ruang Praktek', 3, '2024-02-26 20:21:31', '2024-03-04 20:23:26', 0, 1, 1, 2),
+(3, '03', 'Ruang Rapat', 3, '2024-03-22 02:43:26', '2024-03-22 02:43:35', 0, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -518,8 +523,9 @@ CREATE TABLE `tb_sumberanggaran` (
 --
 
 INSERT INTO `tb_sumberanggaran` (`id_anggaran`, `kode_anggaran`, `nama_anggaran`, `created_at`, `updated_at`, `soft_delete`, `log_user1`, `log_user2`, `last_action`) VALUES
-(1, '01', 'Dana Abadi', '2024-02-20 22:44:06', '2024-02-20 22:44:06', 0, 1, 1, 1),
-(2, '02', 'Dana Talangan', '2024-02-26 19:47:15', '2024-02-26 19:47:15', 0, 1, 1, 1);
+(1, '01', 'Dana Investor', '2024-02-20 22:44:06', '2024-03-22 03:18:40', 0, 1, 1, 2),
+(2, '02', 'Dana Talangan', '2024-02-26 19:47:15', '2024-02-26 19:47:15', 0, 1, 1, 1),
+(3, '03', 'Dana Abadi', '2024-03-22 03:16:53', '2024-03-22 03:18:51', 0, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -543,7 +549,9 @@ CREATE TABLE `tb_tahunpembelian` (
 --
 
 INSERT INTO `tb_tahunpembelian` (`id_tahun`, `tahun`, `created_at`, `updated_at`, `soft_delete`, `log_user1`, `log_user2`, `last_action`) VALUES
-(1, '2021', '2024-02-20 23:22:59', '2024-02-20 23:22:59', 0, 1, 1, 1);
+(1, '2022', '2024-02-20 23:22:59', '2024-03-22 03:47:35', 0, 1, 1, 2),
+(2, '2023', '2024-03-22 03:47:48', '2024-03-22 03:47:48', 0, 1, 1, 1),
+(3, '2024', '2024-03-22 03:48:01', '2024-03-22 03:48:01', 0, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -763,7 +771,7 @@ ALTER TABLE `tb_action`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_detailkartu`
@@ -787,7 +795,7 @@ ALTER TABLE `tb_golongan`
 -- AUTO_INCREMENT for table `tb_jenis`
 --
 ALTER TABLE `tb_jenis`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_kartubarang`
@@ -799,19 +807,19 @@ ALTER TABLE `tb_kartubarang`
 -- AUTO_INCREMENT for table `tb_kategori`
 --
 ALTER TABLE `tb_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_lantai`
 --
 ALTER TABLE `tb_lantai`
-  MODIFY `id_lantai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_lantai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_ruangan`
 --
 ALTER TABLE `tb_ruangan`
-  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_setting`
@@ -823,13 +831,13 @@ ALTER TABLE `tb_setting`
 -- AUTO_INCREMENT for table `tb_sumberanggaran`
 --
 ALTER TABLE `tb_sumberanggaran`
-  MODIFY `id_anggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_anggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_tahunpembelian`
 --
 ALTER TABLE `tb_tahunpembelian`
-  MODIFY `id_tahun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tahun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
