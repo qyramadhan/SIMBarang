@@ -99,7 +99,7 @@
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah anda yakin untuk menghapus data?.</p>
+                    <p>Apakah anda yakin untuk menghapus data?</p>
                 </div>
                 <div class="modal-footer">
                     <input type="text" name="id_tahun" id="id_tahun_delete">
@@ -136,7 +136,7 @@
 <script>
     $('#exampleModal').on('show.bs.modal', function (e) {
         var id = $(e.relatedTarget).data('id');
-        $("#id_user_delete").val(id);
+        $("#id_tahun_delete").val(id);
         console.log(id);
     });
 

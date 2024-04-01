@@ -39,10 +39,10 @@ class TahunPembelianModel extends Model
             ->get();
     }
 
-    public function delete_tahun($id)
+    public function delete_tahun($request)
     {
         try {
-            TahunPembelianModel::where('id_tahun',$id)
+            TahunPembelianModel::where('id_tahun',$request->id_tahun)
             ->update([
                 "soft_delete"   => TRUE,
                 "log_user2"     => Auth::user()->id,

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Session;
 
 class LoginController extends Controller
 {
@@ -57,4 +58,10 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    public function failed()
+    {
+		Session::flash('failed','Username atau Password Anda Salah');
+		return redirect()->route('login');
+	}
 }

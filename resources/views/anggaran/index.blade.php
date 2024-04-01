@@ -138,7 +138,7 @@
 <script>
     $('#exampleModal').on('show.bs.modal', function (e) {
         var id = $(e.relatedTarget).data('id');
-        $("#id_user_delete").val(id);
+        $("#id_anggaran_delete").val(id);
         console.log(id);
     });
 

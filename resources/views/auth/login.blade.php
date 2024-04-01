@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" dir="ltr">
     <head>
-
 		<!-- META DATA -->
 		<meta charset="UTF-8">
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
@@ -25,7 +24,6 @@
 
 		<!--- FONT-ICONS CSS -->
 		<link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet"/>
-
 	</head>
 
 	<body class="app sidebar-mini login-img">
@@ -33,11 +31,11 @@
 		<!-- BACKGROUND-IMAGE -->
 		<div class="error-image">
 
-			<!-- GLOABAL LOADER -->
+			<!-- GLOBAL LOADER -->
 			<div id="global-loader">
 				<img src="{{ asset('assets/images/loader.svg') }}" class="loader-img" alt="Loader">
 			</div>
-			<!-- /GLOABAL LOADER -->
+			<!-- /GLOBAL LOADER -->
 
 			<!-- PAGE -->
 			<div class="page">
@@ -55,6 +53,13 @@
 											Sistem Inventory
 										</span>
 								</div>
+
+								@if ($message = Session::get('failed'))
+								<div class="mb-3 alert alert-warning">
+									<p>{{ $message }}</p>
+								</div>
+								@endif
+
 								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 									<input class="input100" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
 									<span class="focus-input100"></span>
@@ -107,6 +112,5 @@
 
 		<!-- CUSTOM JS -->
 		<script src="{{ asset('assets/js/custom.js') }}"></script>
-
 	</body>
 </html>
