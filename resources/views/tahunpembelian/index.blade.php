@@ -102,7 +102,7 @@
                     <p>Apakah anda yakin untuk menghapus data?</p>
                 </div>
                 <div class="modal-footer">
-                    <input type="text" name="id_tahun" id="id_tahun_delete">
+                    <input type="hidden" name="id_tahun" id="id_tahun_delete">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     @csrf

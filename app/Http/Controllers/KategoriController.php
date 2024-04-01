@@ -42,7 +42,6 @@ class KategoriController extends Controller
             'kode_kategori'    => 'required',
             'nama_kategori'    => 'required',
             'nama_jenis'       => 'required',
-            'nama_golongan'    => 'required',
         ]);
 
         try {
