@@ -42,8 +42,7 @@
                                 <h5 class="card-title">Edit Golongan</h5>
                             </div>
                         </div>
-
-                        @endif
+                        
                         <div class="card-body">
                             <div class="form-content">
                                 <form action="{{ url('golongan/update') }}" method="POST">
