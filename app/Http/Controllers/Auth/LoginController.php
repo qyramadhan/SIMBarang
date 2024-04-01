@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Auth;
 use Session;
 
@@ -54,10 +55,18 @@ class LoginController extends Controller
         return redirect()->route('register');
     }
 
-    public function username()
-    {
-        return 'username';
+    public function login(Request $request){
+        $this->validate($request, [
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        if (auth()->attempt(['username' => $request->username, 'password' => $request->password])) {
+            return redirect('home');
+        }
+        return redirect()->back()->with(['failed' => 'Username and Password invalid !']);
     }
+    
 
     public function failed()
     {
