@@ -59,7 +59,20 @@ class SettingController extends Controller
             Session::flash('success','Setting berhasil di update');
             return redirect('/setting');
         } catch (\Throwable $th) {
+            dd($th);
             Session::flash('failed','Setting gagal di update');
+            return redirect('/setting');
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        try {
+            $this->setting->delete_setting($request->id_setting);
+            Session::flash('success','Setting berhasil di hapus');
+            return redirect('/setting');
+        } catch (\Throwable $th) {
+            Session::flash('error','Setting gagal di hapus');
             return redirect('/setting');
         }
     }

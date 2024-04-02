@@ -30,12 +30,12 @@ class SettingModel extends Model
 
     public function getSetting($id = NULL)
     {
-        if ($id != NULL){
-            return SettingModel::where('tb_setting.soft_delete', false)
+        if($id != NULL){
+            return SettingModel::where('tb_setting.soft_delete',false)
                 ->where('tb_setting.id_setting',$id)
                 ->first();
         }
-        return SettingModel::where('tb_setting.soft_delete', false)
+        return SettingModel::where('tb_setting.soft_delete',false)
             ->get();
     }
 
@@ -45,7 +45,7 @@ class SettingModel extends Model
             SettingModel::where('id_setting',$id)
             ->update([
                 "soft_delete"   => TRUE,
-                "log_user1"      => Auth::user()->id,
+                "log_user1"     => Auth::user()->id,
                 "last_action"   => 3,
             ]);
             return TRUE;
@@ -61,7 +61,6 @@ class SettingModel extends Model
             ->update([
                 "nama_orang"    => $request->nama_orang,
                 "posisi"        => $request->posisi,
-                "id_atasan"     => $request->id_atasan,
                 "log_user2"     => Auth::user()->id,
                 "last_action"   => 2,
             ]);

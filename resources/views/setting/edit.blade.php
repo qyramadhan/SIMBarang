@@ -45,7 +45,7 @@
 
                         <div class="card-body">
                             <div class="form-content">
-                                <form action="{{ url('setting/update', $setting->id) }}" method="POST">
+                                <form action="{{ url('setting/update') }}" method="POST">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
                                         <label class="mg-b-0 tx-semibold">Nama Orang</label>
@@ -66,6 +66,8 @@
 
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
+                                        @csrf
+                                        <input type="hidden" value="{{ $setting->id_setting}}" name="id_setting">
                                         <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
                                         <a class="btn ripple btn-secondary btn-sm" href="{{ url('/setting') }}">Kembali</a>
                                     </div>
