@@ -66,11 +66,4 @@ class LoginController extends Controller
         }
         return redirect()->back()->with(['failed' => 'Username and Password invalid !']);
     }
-    
-
-    public function failed()
-    {
-		Session::flash('failed','Username atau Password Anda Salah');
-		return redirect()->route('login');
-	}
 }

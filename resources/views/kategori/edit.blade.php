@@ -83,25 +83,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row row-xs align-items-center mb-4">
-                                    <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Nama Golongan</label>
-                                    </div>
-                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <select class="form-control" name="nama_golongan">
-                                            @foreach ($golongan as $v)
-                                                @php
-                                                    $statusA = "";
-                                                    if($v->id_golongan == $kategori->nama_golongan){
-                                                        $statusA = "selected";
-                                                    }
-                                                @endphp
-                                                <option value="{{ $v->id_golongan }}" {{ $statusA }}>{{ $v->nama_golongan }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
