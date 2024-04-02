@@ -17,6 +17,7 @@ class SettingModel extends Model
             $sv                 = new SettingModel();
             $sv->nama_orang     = $request->nama_orang;
             $sv->posisi         = $request->posisi;
+            $sv->id_atasan      = $request->id_atasan;
             $sv->soft_delete    = FALSE;
             $sv->log_user1      = Auth::user()->id;
             $sv->log_user2      = Auth::user()->id;
@@ -61,6 +62,7 @@ class SettingModel extends Model
             ->update([
                 "nama_orang"    => $request->nama_orang,
                 "posisi"        => $request->posisi,
+                "id_atasan"     => $request->id_atasan,
                 "log_user2"     => Auth::user()->id,
                 "last_action"   => 2,
             ]);

@@ -63,6 +63,20 @@
                                         <input type="text" name="posisi" class="form-control" placeholder="Posisi/Jabatan">
                                     </div>
                                 </div>
+
+                                <div class="row row-xs align-items-center mb-4">
+                                    <div class="col-md-3">
+                                        <label class="mg-b-0 tx-semibold">Nama Atasan</label>
+                                    </div>
+                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                       <select class="form-control form-select select2" name="id_atasan">
+                                        <option value="0">Atasan</option>                                       
+                                        @foreach ($setting as $value)
+                                            <option value="{{ $value->id_setting }}">{{ $value->nama_orang }}</option>
+                                        @endforeach
+                                       </select>
+                                    </div>
+                                </div>
                         
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">

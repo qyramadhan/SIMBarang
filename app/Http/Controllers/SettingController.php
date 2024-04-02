@@ -49,6 +49,7 @@ class SettingController extends Controller
     public function edit($id_setting)
     {
         $data['setting']= $this->setting->getSetting($id_setting);
+        $data['set']= $this->setting->getSetting();
         return view('setting.edit', $data);
     }
 

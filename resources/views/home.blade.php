@@ -25,22 +25,18 @@
             <!-- ROW-1 -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card  banner">
+                    <div class="card banner">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-3 text-center mb-3 mb-lg-0">
-                                    <img src="{{ asset('assets/images/brand/unperba .png') }}" alt="img" class="w-95">
+                                    <img src="{{ asset('assets/images/brand/unperba.png') }}" alt="img" class="w-95">
                                 </div>
                                 <div class="col-xl-9 col-lg-9 ps-lg-0">
                                     <div class="row">
                                         <div class="col-xl-7 col-lg-6">
                                             <div class="text-start text-white mt-xl-4">
-                                                <h3 class="font-weight-semibold">Congratulations Steven</h3>
-                                                <h4 class="font-weight-normal">You are Reached your targeted
-                                                    milestone</h4>
-                                                <p class="mb-lg-0 text-white-50">If you are going to use a
-                                                    passage of Lorem Ipsum, you need to be sure there isn't
-                                                    anything embarrassing hidden in the middle of text.</p>
+                                                <h3 class="font-weight-semibold">Selamat Datang</h3>
+                                                <h4 class="font-weight-normal">Di Aplikasi Sistem Informasi Inventory Barang</h4>
                                             </div>
                                         </div>
                                     </div>

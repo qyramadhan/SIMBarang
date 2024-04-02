@@ -64,6 +64,31 @@
                                     </div>
                                 </div>
 
+                                <div class="row row-xs align-items-center mb-4">
+                                    <div class="col-md-3">
+                                        <label class="mg-b-0 tx-semibold">Nama Atasan</label>
+                                    </div>
+                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                        <select class="form-control" name="id_atasan">
+                                            @php
+                                                $pilih = "";
+                                                if ($setting->id_atasan == 0) {
+                                                    $pilih = "selected";
+                                                }
+                                            @endphp
+                                            <option value="0" {{ $pilih }}>Atasan</option>
+                                            @foreach ($set as $item)
+                                                @php
+                                                    $selected = "";
+                                                    if($item->id_setting == $setting->id_atasan){
+                                                        $selected = "selected";
+                                                    }
+                                                @endphp
+                                                <option value="{{ $item->id_setting }}" {{ $selected }}>{{ $item->nama_orang }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                 <div class="form-group row justify-content-end mb-0 mt-5">
                                     <div class="col-md-9">
                                         @csrf
