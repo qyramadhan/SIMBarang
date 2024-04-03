@@ -12,13 +12,10 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <div>
-                    <h1 class="page-title">Hi! Welcome To Sistem Inventory Barang</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="\home">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="\home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
             </div>
             <!-- PAGE-HEADER END -->
 
@@ -55,8 +52,8 @@
                         <div class="card-body">
                             <div class="row mb-1">
                                 <div class="col">
-                                    <p class="mb-2">Product Sold</p>
-                                    <h3 class="mb-0 number-font">57,865</h3>
+                                    <a href="{{ url('/barang') }}"><p class="mb-2">Total Barang</p></a>
+                                    <h3 class="mb-0 number-font">{{ $count1 }}</h3>
                                 </div>
                                 <div class="col-auto mb-0">
                                     <div class="dash-icon text-orange">
@@ -64,13 +61,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fs-12 text-success">
-                                <strong>2.6%</strong>
-                                <i class="mdi mdi-arrow-up"></i>
-                            </span>
-                            <span class="text-muted fs-12 ms-0 mt-1">than
-                                last week
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -79,8 +69,8 @@
                         <div class="card-body">
                             <div class="row mb-1">
                                 <div class="col">
-                                    <p class="mb-2">Total Balance</p>
-                                    <h3 class="mb-0 number-font">$2,156</h3>
+                                    <a href="{{ url('/ruang') }}"><p class="mb-2">Total Ruang</p></a>
+                                    <h3 class="mb-0 number-font">{{ $count2 }}</h3>
                                 </div>
                                 <div class="col-auto mb-0">
                                     <div class="dash-icon text-secondary1">
@@ -88,13 +78,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fs-12 text-danger">
-                                <strong>0.06%</strong>
-                                <i class="mdi mdi-arrow-down"></i>
-                            </span>
-                            <span class="text-muted fs-12 ms-0 mt-1">than
-                                last week
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -103,8 +86,8 @@
                         <div class="card-body">
                             <div class="row mb-1">
                                 <div class="col">
-                                    <p class="mb-2">Sales Profit</p>
-                                    <h3 class="mb-0 number-font">$12,105</h3>
+                                    <a href="{{ url('/lantai') }}"><p class="mb-2">Total Lantai</p></a>
+                                    <h3 class="mb-0 number-font">{{ $count3 }}</h3>
                                 </div>
                                 <div class="col-auto mb-0">
                                     <div class="dash-icon text-secondary">
@@ -112,13 +95,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fs-12 text-danger">
-                                <strong>0.15%</strong>
-                                <i class="mdi mdi-arrow-down"></i>
-                            </span>
-                            <span class="text-muted fs-12 ms-0 mt-1">than
-                                last week
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -127,8 +103,8 @@
                         <div class="card-body">
                             <div class="row mb-1">
                                 <div class="col">
-                                    <p class="mb-2">Total Expenses</p>
-                                    <h3 class="mb-0 number-font">$4,673</h3>
+                                    <a href="{{ url('/users') }}"><p class="mb-2">Total Pengguna</p></a>
+                                    <h3 class="mb-0 number-font">{{ $count4 }}</h3>
                                 </div>
                                 <div class="col-auto mb-0">
                                     <div class="dash-icon text-warning">
@@ -136,13 +112,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fs-12 text-success">
-                                <strong>1.05%</strong>
-                                <i class="mdi mdi-arrow-up"></i>
-                            </span>
-                            <span class="text-muted fs-12 ms-0 mt-1">than
-                                last week
-                            </span>
                         </div>
                     </div>
                 </div>

@@ -54,7 +54,7 @@
 			<div class="container">
 				<div class="row align-items-center flex-row-reverse">
 					<div class="col-md-12 col-sm-12 text-center">
-						Copyright © 2024 <a href="javascript:void(0);"><a href="javascript:void(0);"> Q </a> All rights reserved.
+						Copyright © 2024 <a href="javascript:void(0);"><a href="javascript:void(0);"> - UPT SI Universitas Perwira Purbalingga </a>
 					</div>
 				</div>
 			</div>

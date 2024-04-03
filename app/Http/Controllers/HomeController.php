@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\BarangModel;
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -23,11 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function coba()
-    {
-        return view('coba');
+        $count1 = DB::table('tb_barang')->count();
+        $count2 = DB::table('tb_ruangan')->count();
+        $count3 = DB::table('tb_lantai')->count();
+        $count4 = DB::table('users')->count();
+        return view('home', compact('count1','count2','count3','count4'));
     }
 }
