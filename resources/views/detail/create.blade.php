@@ -44,7 +44,62 @@
                             </div>
                         @endif
 
-                        <div class="card-body">
+                        <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Tambah Detail Kartu Barang</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-content">
+                                            <form action="{{ url('detail/store') }}" method="POST">                                   
+                                            <div class="row row-xs align-items-center mb-4">
+                                                <div class="col-md-3">
+                                                    <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
+                                                </div>
+                                                <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                                    <input type="text" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang">
+                                                </div>
+                                            </div>
+            
+                                            <div class="row row-xs align-items-center mb-4">
+                                                <div class="col-md-3">
+                                                    <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
+                                                </div>
+                                                <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                                    <input type="text" name="kondisi_barang" class="form-control" placeholder="Kondisi Barang"> 
+                                                </div>
+                                            </div>
+            
+                                            <div class="row row-xs align-items-center mb-4">
+                                                <div class="col-md-3">
+                                                    <label class="mg-b-0 tx-semibold">Keterangan</label>
+                                                </div>
+                                                <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                                    <input type="text" name="keterangan" class="form-control" placeholder="Keterangan"> 
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="form-group row justify-content-end mb-0 mt-5">
+                                                <div class="col-md-9">
+                                                    <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
+                                                    <a class="btn ripple btn-secondary btn-sm" href="{{ url('/detail') }}">Kembali</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        @csrf
+                                        <input type="hidden" name="id_detail" id="id_detail_simpan">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="card-body">
                             <div class="form-content">
                                 <form action="{{ url('detail/store') }}" method="POST">
                                 <div class="row row-xs align-items-center mb-4">
@@ -95,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -115,5 +170,10 @@
 
 @endsection
 @section('js')
-
+<script>
+    $('#exampleModal').on('show.bs.modal', function (e) {
+        var id = $(e.relatedTarget).data('id');
+        $("#id_detail_simpan").val(id);
+    });
+</script>
 @endsection

@@ -36,7 +36,7 @@ class DetailKartuModel extends Model
                 ->join("tb_ruangan","tb_ruangan.id_ruang","=","tb_kartubarang.id_ruang")
                 ->where('tb_detailkartu.soft_delete', false)
                 ->where('tb_kartubarang.soft_delete', false)
-                ->where('tb_detailkartu.id_detail',$id)
+                ->where('tb_detailkartu.id_detailkartu',$id)
                 ->first();
             
         }

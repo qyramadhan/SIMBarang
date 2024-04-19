@@ -21,9 +21,9 @@ class DetailKartuController extends Controller
         $this->ruang    = new RuangModel();
     }
 
-    public function index()
+    public function index($id_kartu)
     {
-        $data['detail'] = $this->detail->getDetail();
+        $data['detail'] = $this->detail->getDetail($id_kartu);
         return view('detail.index', $data);
     }
 
@@ -36,7 +36,6 @@ class DetailKartuController extends Controller
     public function store(Request $request)
     {
         $this->validate ($request, [
-            'id_ruang'          => 'required',
             'jumlah_barang'     => 'required',
             'kondisi_barang'    => 'required',
             'keterangan'        => 'required',

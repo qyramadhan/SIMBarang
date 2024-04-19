@@ -22,7 +22,7 @@
                 </div>
                 <div class="ms-auto pageheader-btn">
                     @can('role-create')
-                    <a href="{{ url('detail/create') }}" class="btn btn-secondary btn-icon text-white">
+                    <a href="{{ url('detail/create') }}" class="btn btn-secondary btn-icon text-white btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                         <span>
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
@@ -57,7 +57,6 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p">No</th>
-                                            <th class="wd-15p">Ruangan</th>
                                             <th class="wd-15p">Jumlah Barang</th>
                                             <th class="wd-15p">Kondisi Barang</th>
                                             <th class="wd-15p">Keterangan</th>
@@ -66,20 +65,23 @@
 
                                     </thead>
                                     <tbody>
-                                        @foreach ($detail as $key => $value)
-                                        <tr>
-                                            <td>{{ ++$key }}</td>
-                                            <td>{{ $value->nama_ruang }}</td>
-                                            <td>{{ $value->jumlah_barang }}</td>
-                                            <td>{{ $value->kondisi_barang }}</td>
-                                            <td>{{ $value->keterangan }}</td>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary btn-sm" href="{{ url('detail/edit',$value->id_detailkartu) }}"><i class="fa fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                        @if(!empty($detail))
+                                            @foreach ($detail as $key => $value)
+                                            <tr>
+                                                <td>{{ ++$key }}</td>
+                                                <td>{{ $value->jumlah_barang }}</td>
+                                                <td>{{ $value->kondisi_barang }}</td>
+                                                <td>{{ $value->keterangan }}</td>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-sm" href="{{ url('detail/edit',$value->id_detailkartu) }}"><i class="fa fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @else
+                                            
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -120,6 +122,58 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="{{ url('detail/create') }}" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Tambah Detail Kartu Barang</h5>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-content">
+                        <form action="{{ url('detail/store') }}" method="POST">               
+                        <div class="row row-xs align-items-center mb-4">
+                            <div class="col-md-4">
+                                <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
+                            </div>
+                            <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                <input type="text" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang">
+                            </div>
+                        </div>
+
+                        <div class="row row-xs align-items-center mb-4">
+                            <div class="col-md-4">
+                                <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
+                            </div>
+                            <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                <input type="text" name="kondisi_barang" class="form-control" placeholder="Kondisi Barang"> 
+                            </div>
+                        </div>
+
+                        <div class="row row-xs align-items-center mb-4">
+                            <div class="col-md-4">
+                                <label class="mg-b-0 tx-semibold">Keterangan</label>
+                            </div>
+                            <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                <input type="text" name="keterangan" class="form-control" placeholder="Keterangan"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @csrf
+                    <input type="hidden" name="id_detail_simpan" id="id_detail_simpan">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 
 
@@ -145,6 +199,11 @@
     $('#exampleModal').on('show.bs.modal', function (e) {
         var id = $(e.relatedTarget).data('id');
         $("#id_detail_delete").val(id);
+    });
+
+    $('#exampleModal1').on('show.bs.modal', function (e) {
+        var id = $(e.relatedTarget).data('id');
+        $("#id_detail_simpan").val(id);
     });
 
 </script>

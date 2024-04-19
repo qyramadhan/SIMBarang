@@ -47,7 +47,7 @@
                             <div class="form-content">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Name:</label>
+                                        <label class="mg-b-0 tx-semibold">Name</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
                                     {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
@@ -56,7 +56,7 @@
 
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-3">
-                                    <label class="mg-b-0 tx-semibold">E-Mail:</label>
+                                    <label class="mg-b-0 tx-semibold">E-Mail</label>
                                 </div>
                                 <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
@@ -65,16 +65,16 @@
 
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-3">
-                                    <label class="mg-b-0 tx-semibold">Username:</label>
+                                    <label class="mg-b-0 tx-semibold">Username</label>
                                 </div>
                                 <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                {!! Form::text('email', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
+                                {!! Form::text('username', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
                                 </div>
                             </div>
 
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-3">
-                                    <label class="mg-b-0 tx-semibold">Password:</label>
+                                    <label class="mg-b-0 tx-semibold">Password</label>
                                 </div>
                                 <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
@@ -83,7 +83,7 @@
 
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-3">
-                                    <label class="mg-b-0 tx-semibold">Confirm Password:</label>
+                                    <label class="mg-b-0 tx-semibold">Confirm Password</label>
                                 </div>
                                 <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
@@ -100,8 +100,10 @@
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                      @endforeach
                                     </select>
+                                
                                     <div class="form-group row mb-0 mt-5">
                                         <div class="col-md-9">
+                                            @csrf
                                             <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
                                             <a class="btn ripple btn-secondary btn-sm" href="{{ route('users.index') }}">Kembali</a>
                                         </div>

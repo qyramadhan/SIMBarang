@@ -78,7 +78,6 @@
                         <ul class="slide-menu">
                             <li class="side-menu-label1"><a href="javascript:void(0);">Inventaris Barang</a></li>
                             <li><a class="slide-item" href="{{ url('/kartu') }}">Kartu Barang</a></li>
-                            <li><a class="slide-item" href="{{ url('/detail') }}">Detail Kartu Barang</a></li>
                         </ul>
                     </li>
                     <li class="slide">

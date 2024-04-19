@@ -74,9 +74,10 @@
                                             <td>{{ $value->nama_ruang }}</td>
                                             <td>{{ $value->keterangan }}</td>
                                             </td>
-                                            <td>
+                                            <td>                                              
                                                 <a class="btn btn-primary btn-sm" href="{{ url('kartu/edit',$value->id_kartu) }}"><i class="fa fa-edit"></i></a>
                                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_kartu }}"><i class="fa fa-trash"></i></button>
+                                                <a class="btn btn-info btn-sm" href="{{ url('detail',$value->id_kartu) }}"><i class="fa fa-eye"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -96,8 +97,7 @@
 
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <form action="{{ url('kartu/delete') }}" method="post">
             <div class="modal-content">
@@ -119,7 +119,6 @@
         </form>
     </div>
 </div>
-
 
 
 
@@ -145,69 +144,6 @@
     $('#exampleModal').on('show.bs.modal', function (e) {
         var id = $(e.relatedTarget).data('id');
         $("#id_kartu_delete").val(id);
-    });
-
-    $(document).ready(function){
-        var count = 1;
-
-        dynamic_field(count);
-
-        function dynamic_field(number)
-        {
-            html = '<tr>';
-                html += '<th class="wd-15p">Nama Ruang</th>'
-                html += '<th class="wd-15p">Keterangan</th>'
-                if(number > 1)
-                {
-                    html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
-                    $('tbody').append(html);
-                }
-                else
-                {   
-                    html += '<td><button type="button" name="add" id="add" class="btn btn-success">Add</button></td></tr>';
-                    $('tbody').html(html);
-                }
-        }
-
-        $(document).on('click', '#add', function(){
-            count++;
-            dynamic_field(count);
-        });
-
-        $(document).on('click', '.remove', function(){
-            count--;
-            $(this).closest("tr").remove();
-        });
-
-        $('#dynamic_form').on('submit', function(event){
-        event.preventDefault();
-        $.ajax({
-            url:'{{ url("dynamic-field.insert") }}',
-            method:'post',
-            data:$(this).serialize(),
-            dataType:'json',
-            beforeSend:function(){
-                $('#save').attr('disabled','disabled');
-            },
-            success:function(data)
-            {
-                if(data.error)
-                {
-                    var error_html = '';
-                    for(var count = 0; count < data.error.length; count++)
-                    {
-                        error_html += '<p>'+data.error[count]+'</p>';
-                    }
-                    $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                }
-                else
-                {
-                    dynamic_field(1);
-                    $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
-                }
-                $('#save').attr('disabled', false);
-            }
-        })
     });
 </script>
 @endsection

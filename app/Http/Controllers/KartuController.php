@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DetailKartuModel;
 use App\KartuModel;
 use App\RuangModel;
 use Illuminate\Http\Request;
@@ -11,11 +12,13 @@ class KartuController extends Controller
 {
     private $kartu;
     private $ruang;
+    private $detail;
 
     function __construct()
     {
         $this->kartu         = new KartuModel();
         $this->ruang         = new RuangModel();
+        $this->detail        = new DetailKartuModel();
     }
 
     public function index()
