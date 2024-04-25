@@ -49,7 +49,7 @@
                 <div class="col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Detail Kartu Barang</h3>
+                            <h3 class="card-title">Data Detail Kartu Barang {{ $detail->nama_ruang}}</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -57,18 +57,18 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p">No</th>
+                                            <th class="wd-15p">Nama Barang</th>
                                             <th class="wd-15p">Jumlah Barang</th>
                                             <th class="wd-15p">Kondisi Barang</th>
                                             <th class="wd-15p">Keterangan</th>
                                             <th class="wd-20p">Action</th>
                                         </tr>
-
                                     </thead>
                                     <tbody>
-                                        @if(!empty($detail))
-                                            @foreach ($detail as $key => $value)
+                                        {{-- @foreach ($detail as $key => $value)
                                             <tr>
                                                 <td>{{ ++$key }}</td>
+                                                <td>{{ $value->nama_barang }}</td>
                                                 <td>{{ $value->jumlah_barang }}</td>
                                                 <td>{{ $value->kondisi_barang }}</td>
                                                 <td>{{ $value->keterangan }}</td>
@@ -78,10 +78,7 @@
                                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        @else
-                                            
-                                        @endif
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -109,7 +106,7 @@
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah anda yakin untuk menghapus data?.</p>
+                    <p>Apakah anda yakin untuk menghapus data?</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_detail" id="id_detail_delete">
@@ -125,7 +122,6 @@
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="{{ url('detail/create') }}" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">Tambah Detail Kartu Barang</h5>
@@ -134,45 +130,58 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-content">
-                        <form action="{{ url('detail/store') }}" method="POST">               
-                        <div class="row row-xs align-items-center mb-4">
-                            <div class="col-md-4">
-                                <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
+                        <form action="{{ url('detail/store') }}" method="POST">
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">Nama Barang</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" id="nama_barang">
+                                        @foreach ($barang as $value)
+                                            <option value="{{ $value->id_barang }}">{{ $value->nama_barang }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-md-12 mg-t-5 mg-md-t-0">
-                                <input type="text" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang">
-                            </div>
-                        </div>
 
-                        <div class="row row-xs align-items-center mb-4">
-                            <div class="col-md-4">
-                                <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <input type="text" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang">
+                                </div>
                             </div>
-                            <div class="col-md-12 mg-t-5 mg-md-t-0">
-                                <input type="text" name="kondisi_barang" class="form-control" placeholder="Kondisi Barang"> 
-                            </div>
-                        </div>
 
-                        <div class="row row-xs align-items-center mb-4">
-                            <div class="col-md-4">
-                                <label class="mg-b-0 tx-semibold">Keterangan</label>
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <input type="text" name="kondisi_barang" class="form-control" placeholder="Kondisi Barang"> 
+                                </div>
                             </div>
-                            <div class="col-md-12 mg-t-5 mg-md-t-0">
-                                <input type="text" name="keterangan" class="form-control" placeholder="Keterangan"> 
+
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">Keterangan</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <input type="text" name="keterangan" class="form-control" placeholder="Keterangan"> 
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        @csrf
+                        <input type="text" name="id_detail" id="id_detail_simpan">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    @csrf
-                    <input type="hidden" name="id_detail_simpan" id="id_detail_simpan">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
 
 
@@ -181,19 +190,22 @@
 
 @section('js')
 <!-- INTERNAL  DATA TABLE JS-->
-<script src="../assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-<script src="../assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
-<script src="../assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
-<script src="../assets/plugins/datatable/js/jszip.min.js"></script>
-<script src="../assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
-<script src="../assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
-<script src="../assets/plugins/datatable/js/buttons.html5.min.js"></script>
-<script src="../assets/plugins/datatable/js/buttons.print.min.js"></script>
-<script src="../assets/plugins/datatable/js/buttons.colVis.min.js"></script>
-<script src="../assets/plugins/datatable/dataTables.responsive.min.js"></script>
-<script src="../assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
-<script src="../assets/plugins/datatable/datatable.js"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/datatable.js') }}"></script>
+<script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
+<script src="{{ asset('assets/js/form-elements.js') }}"></script>
+<script src="{{ asset('assets/js/select2.js') }}"></script>
 
 <script>
     $('#exampleModal').on('show.bs.modal', function (e) {

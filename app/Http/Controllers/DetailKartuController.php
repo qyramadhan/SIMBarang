@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BarangModel;
 use App\DetailKartuModel;
 use App\KartuModel;
 use App\RuangModel;
@@ -12,18 +13,19 @@ class DetailKartuController extends Controller
 {
     private $detail;
     private $kartu;
-    private $ruang;
+    private $barang;
 
     function __construct()
     {
         $this->detail   = new DetailKartuModel();
         $this->kartu    = new KartuModel();
-        $this->ruang    = new RuangModel();
+        $this->barang   = new BarangModel();
     }
 
-    public function index($id_kartu)
+    public function index($id_detailkartu)
     {
-        $data['detail'] = $this->detail->getDetail($id_kartu);
+        $data['detail'] = $this->detail->getDetail($id_detailkartu);
+        $data['barang'] = $this->detail->getDataBarang();
         return view('detail.index', $data);
     }
 
@@ -36,6 +38,8 @@ class DetailKartuController extends Controller
     public function store(Request $request)
     {
         $this->validate ($request, [
+            'id_kartu'          => 'required',
+            'id_barang'         => 'required',
             'jumlah_barang'     => 'required',
             'kondisi_barang'    => 'required',
             'keterangan'        => 'required',
@@ -66,7 +70,7 @@ class DetailKartuController extends Controller
     public function edit($id_detailkartu)
     {
         $data['detail']         = $this->detail->getDetail($id_detailkartu);
-        $data['kartu']          = $this->kartu->getKartu();
+        $data['barang']         = $this->barang->getBarang();
         return view('detail.edit',$data);
     }
 

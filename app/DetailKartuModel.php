@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use DB;
 
 class DetailKartuModel extends Model
 {
@@ -15,9 +16,11 @@ class DetailKartuModel extends Model
     {
         try {
             $sv                 = new DetailKartuModel();
-            $sv->id_ruang       = $request->id_ruang;
+            $sv->id_kartu       = $request->id_kartu;
+            $sv->id_barang      = $request->id_barang;
             $sv->jumlah_barang  = $request->jumlah_barang;
             $sv->kondisi_barang = $request->kondisi_barang;
+            $sv->keterangan     = $request->keterangan;
             $sv->soft_delete    = FALSE;
             $sv->log_user1      = Auth::user()->id;
             $sv->log_user2      = Auth::user()->id;
@@ -32,18 +35,36 @@ class DetailKartuModel extends Model
     public function getDetail($id = NULL)
     {
         if ($id != NULL) {
-            return DetailKartuModel::join("tb_kartubarang","tb_kartubarang.id_kartu","=","tb_detailkartu.id_kartu")
+            return DB::table('tb_kartubarang')
                 ->join("tb_ruangan","tb_ruangan.id_ruang","=","tb_kartubarang.id_ruang")
-                ->where('tb_detailkartu.soft_delete', false)
                 ->where('tb_kartubarang.soft_delete', false)
-                ->where('tb_detailkartu.id_detailkartu',$id)
+                ->where('tb_ruangan.soft_delete', false)
+                ->where('tb_kartubarang.id_kartu',$id)
                 ->first();
             
         }
-        return DetailKartuModel::join("tb_kartubarang","tb_kartubarang.id_kartu","=","tb_detailkartu.id_kartu")
+        return DB::table('tb_kartubarang')
                 ->join("tb_ruangan","tb_ruangan.id_ruang","=","tb_kartubarang.id_ruang")
-                ->where('tb_detailkartu.soft_delete', false)
+                ->where('tb_ruangan.soft_delete', false)
                 ->where('tb_kartubarang.soft_delete', false)
+                ->get();
+    }
+
+    public function getDataBarang($id = NULL)
+    {
+        if ($id != NULL) {
+            return DB::table('tb_barang')
+                ->join("tb_kategori","tb_kategori.id_kategori","=","tb_barang.id_kategori")
+                ->where('tb_kategori.soft_delete', false)
+                ->where('tb_barang.soft_delete', false)
+                ->where('tb_barang.id_barang',$id)
+                ->first();
+            
+        }
+        return DB::table('tb_barang')
+                ->join("tb_kategori","tb_kategori.id_kategori","=","tb_barang.id_kategori")
+                ->where('tb_kategori.soft_delete', false)
+                ->where('tb_barang.soft_delete', false)
                 ->get();
     }
 
@@ -67,7 +88,7 @@ class DetailKartuModel extends Model
         try {
             DetailKartuModel::where('id_detailkartu',$request->id_detailkartu)
             ->update([
-                "id_ruang"              => $request->nama_ruang,
+                "id_barang"             => $request->nama_barang,
                 "jumlah_barang"         => $request->jumlah_barang,
                 "kondisi_barang"        => $request->kondisi_barang,
                 "keterangan"            => $request->keterangan,
