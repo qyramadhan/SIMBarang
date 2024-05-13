@@ -10,6 +10,7 @@ use Session;
 
 class KartuController extends Controller
 {
+         
     private $kartu;
     private $ruang;
     private $detail;

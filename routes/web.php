@@ -148,6 +148,7 @@ Route::group(['prefix' => 'kartu'], function () {
 Route::group(['prefix' => 'detail'], function () {
     Route::get('/{id_kartu}',                  'DetailKartuController@index');
     Route::get('/create',                      'DetailKartuController@create');
+    Route::get('/cetak/{id_kartu}',            'DetailKartuController@cetak');
     Route::get('/edit/{id_detailkartu}',       'DetailKartuController@edit');
     Route::post('/store',                      'DetailKartuController@store');
     Route::post('/update',                     'DetailKartuController@update');

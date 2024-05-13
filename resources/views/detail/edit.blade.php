@@ -48,18 +48,18 @@
                                 <form action="{{ url('detail/update') }}" method="POST">
                                     <div class="row row-xs align-items-center mb-4">
                                         <div class="col-md-3">
-                                            <label class="mg-b-0 tx-semibold">Nama Ruang</label>
+                                            <label class="mg-b-0 tx-semibold">Nama Barang</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <select class="form-control" name="id_ruang">
-                                                @foreach ($detail as $v)
+                                            <select class="form-control" name="id_barang">
+                                                @foreach ($barang as $v)
                                                     @php
                                                         $statusA = "";
-                                                        if($v->id_ruang == $ruang->id_ruang){
+                                                        if($v->id_barang == $detail->id_barang){
                                                             $statusA = "selected";
                                                         }
                                                     @endphp
-                                                    <option value="{{ $v->id_ruang }}" {{ $statusA }}>{{ $v->nama_ruang }}</option>
+                                                    <option value="{{ $v->id_barang }}" {{ $statusA }}>{{ $v->nama_barang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -94,7 +94,8 @@
                                     <div class="form-group row justify-content-end mb-0 mt-5">
                                         <div class="col-md-9">
                                             @csrf
-                                            <input type="hidden" value="{{ $detail->id_detailkartu }}" name="id_detail">
+                                            <input type="hidden" value="{{ $detail->id_detailkartu }}" name="id_detailkartu">
+                                            <input type="hidden" value="{{ $detail->id_kartu }}" name="id_kartu" >
                                             <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
                                             <a class="btn ripple btn-secondary btn-sm" href="{{ url('/detail') }}">Kembali</a>
                                         </div>
