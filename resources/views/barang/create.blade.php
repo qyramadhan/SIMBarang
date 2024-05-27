@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inventory - Tambah Barang Baru')
+@section('title', 'Inventory - TambahBarang')
 
 @section('content')
 
@@ -26,9 +26,9 @@
                 <div class="mb-3 alert alert-danger">
                     <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                     <ul>
-                    @foreach ($errors->all() as $error)
+                        @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
-                    @endforeach
+                        @endforeach
                     </ul>
                 </div>
             @endif
@@ -47,30 +47,30 @@
                                 <form action="{{ url('barang/store') }}" method="POST">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Nama Barang</label>
+                                        <label class="mg-b-0 tx-semibold">Kode Barang</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang"> 
+                                        <input type="text" name="kode_barang" class="form-control" placeholder="Kode Barang"> 
                                     </div>
                                 </div>
                         
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Tanggal Pembelian</label>
+                                        <label class="mg-b-0 tx-semibold">Nama Barang</label>
                                     </div>
-                                    <div class="col-md-2 mg-t-5 mg-md-t-0">
-                                        <input type="date" name="tgl_pembelian" class="form-control" placeholder="Tanggal Pembelian">
+                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                        <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang">
                                     </div>
                                 </div>
 
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Nama Kategori</label>
+                                        <label class="mg-b-0 tx-semibold">Nama Jenis</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                       <select class="form-control form-select select2" name="nama_kategori">
-                                        @foreach ($kategori as $value)
-                                            <option value="{{ $value->id_kategori }}">{{ $value->nama_kategori }}</option>
+                                       <select class="form-control form-select select2" name="nama_jenis">
+                                        @foreach ($jenis as $value)
+                                            <option value="{{ $value->id_jenis }}">{{ $value->nama_jenis }}</option>
                                         @endforeach
                                        </select>
                                     </div>

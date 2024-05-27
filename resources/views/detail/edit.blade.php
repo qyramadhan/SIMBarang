@@ -64,6 +64,16 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="row row-xs align-items-center mb-4">
+                                        <div class="col-md-3">
+                                            <label class="mg-b-0 tx-semibold">No Urut Barang</label>
+                                        </div>
+                                        <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                            <input type="text" name="no_urut" class="form-control" placeholder="No Urut Barang" value="{{ $detail->no_urut }}"> 
+                                        </div>
+                                    </div>
+
                                     <div class="row row-xs align-items-center mb-4">
                                         <div class="col-md-3">
                                             <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
@@ -78,7 +88,50 @@
                                             <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <input type="text" name="kondisi_barang" class="form-control" placeholder="Kondisi Barang" value="{{ $detail->kondisi_barang }}">
+                                            <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" name="kondisi_barang" class="form-control">
+                                                <option disabled>Pilih kondisi Barang</option>
+                                                    <option value="1" {{ ($detail->kondisi_barang==1) ? 'selected' : ''  }}>Baik</option>
+                                                    <option value="2" {{ ($detail->kondisi_barang==2) ? 'selected' : ''  }}>Kurang Baik</option>
+                                                    <option value="3" {{ ($detail->kondisi_barang==3) ? 'selected' : ''  }}>Rusak</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row row-xs align-items-center mb-4">
+                                        <div class="col-md-3">
+                                            <label class="mg-b-0 tx-semibold">Tahun Pembelian</label>
+                                        </div>
+                                        <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                            <select class="form-control" name="id_tahun">
+                                                @foreach ($tahun as $v)
+                                                    @php
+                                                        $statusA = "";
+                                                        if($v->id_tahun == $detail->id_tahun){
+                                                            $statusA = "selected";
+                                                        }
+                                                    @endphp
+                                                    <option value="{{ $v->id_tahun }}" {{ $statusA }}>{{ $v->tahun }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row row-xs align-items-center mb-4">
+                                        <div class="col-md-3">
+                                            <label class="mg-b-0 tx-semibold">Sumber Anggaran</label>
+                                        </div>
+                                        <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                            <select class="form-control" name="id_anggaran">
+                                                @foreach ($anggaran as $v)
+                                                    @php
+                                                        $statusA = "";
+                                                        if($v->id_anggaran == $detail->id_anggaran){
+                                                            $statusA = "selected";
+                                                        }
+                                                    @endphp
+                                                    <option value="{{ $v->id_anggaran }}" {{ $statusA }}>{{ $v->nama_anggaran }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -97,7 +150,7 @@
                                             <input type="hidden" value="{{ $detail->id_detailkartu }}" name="id_detailkartu">
                                             <input type="hidden" value="{{ $detail->id_kartu }}" name="id_kartu" >
                                             <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
-                                            <a class="btn ripple btn-secondary btn-sm" href="{{ url('/detail') }}">Kembali</a>
+                                            <a class="btn ripple btn-secondary btn-sm" href="{{ url('detail/'.$detail->id_kartu) }}">Kembali</a>
                                         </div>
                                     </div>
                                 </div>

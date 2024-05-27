@@ -89,14 +89,6 @@ Route::group(['prefix' => 'jenis'], function () {
     Route::post('/delete',                     'JenisController@delete');
 });
 
-Route::group(['prefix' => 'kategori'], function () {
-    Route::get('/',                            'KategoriController@index');
-    Route::get('/create',                      'KategoriController@create');
-    Route::get('/edit/{id_kategori}',          'KategoriController@edit');
-    Route::post('/store',                      'KategoriController@store');
-    Route::post('/update',                     'KategoriController@update');
-    Route::post('/delete',                     'KategoriController@delete');
-});
 
 Route::group(['prefix' => 'barang'], function () {
     Route::get('/',                            'BarangController@index');
@@ -149,6 +141,7 @@ Route::group(['prefix' => 'detail'], function () {
     Route::get('/{id_kartu}',                  'DetailKartuController@index');
     Route::get('/create',                      'DetailKartuController@create');
     Route::get('/cetak/{id_kartu}',            'DetailKartuController@cetak');
+    Route::get('/cetakkartu/{id_kartu}',       'DetailKartuController@cetakkartu');
     Route::get('/edit/{id_detailkartu}',       'DetailKartuController@edit');
     Route::post('/store',                      'DetailKartuController@store');
     Route::post('/update',                     'DetailKartuController@update');

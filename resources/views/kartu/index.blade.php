@@ -28,11 +28,11 @@
                         </span> Tambah Data
                     </a>
 
-                    <a href="{{ url('kartu/cetak') }}" class="btn btn-success btn-icon text-white btn-sm">
+                    {{-- <a href="{{ url('kartu/cetak') }}" class="btn btn-success btn-icon text-white btn-sm">
                         <span>
                             <i class="fa fa-print"></i>
                         </span> Cetak Data
-                    </a>
+                    </a> --}}
                     @endcan
                 </div>
             </div>

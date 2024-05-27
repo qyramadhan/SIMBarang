@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangModel;
-use App\KategoriModel;
-use App\JenisModel;
 use App\GolonganModel;
-use Carbon\Carbon;
+use App\JenisModel;
+use App\BarangModel;
 use Illuminate\Http\Request;
 use DB;
 use Session;
@@ -14,29 +12,25 @@ use Session;
 class BarangController extends Controller
 {
     private $barang;
-    private $kategori;
     private $jenis;
     private $golongan;
 
     function __construct()
     {
         $this->barang           = new BarangModel();
-        $this->kategori         = new KategoriModel();
         $this->jenis            = new JenisModel();
         $this->golongan         = new GolonganModel();
     }
 
-    public function index ()
+    public function index()
     {
-        Carbon::parse('2019-03-01')->translatedFormat('d F Y');
         $data['barang'] = $this->barang->getBarang();
-        return view('barang.index',$data);
+        return view('barang.index', $data);
     }
 
     public function create()
     {
         $data['barang']     = $this->barang->getBarang();
-        $data['kategori']   = $this->kategori->getKategori();
         $data['jenis']      = $this->jenis->getJenis();
         $data['golongan']   = $this->golongan->getGolongan();
         return view('barang.create', $data);
@@ -45,9 +39,9 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate ($request, [
-            'nama_barang'       => 'required',
-            'tgl_pembelian'     => 'required',
-            'nama_kategori'     => 'required',
+            'kode_barang'    => 'required',
+            'nama_barang'    => 'required',
+            'nama_jenis'       => 'required',
         ]);
 
         try {
@@ -74,10 +68,9 @@ class BarangController extends Controller
 
     public function edit($id_barang)
     {
-        $data['barang']          = $this->barang->getBarang($id_barang);
-        $data['kategori']        = $this->kategori->get();
-        $data['jenis']           = $this->jenis->get();
-        $data['golongan']        = $this->golongan->get();
+        $data['barang']        = $this->barang->getBarang($id_barang);
+        $data['jenis']           = DB::table('tb_jenis')->get();
+        $data['golongan']        = DB::table('tb_golongan')->get();
         return view('barang.edit',$data);
     }
 
@@ -91,11 +84,5 @@ class BarangController extends Controller
             Session::flash('error','Barang gagal di update');
             return redirect('/barang');
         }
-    }
-
-    public function cetak()
-    {
-        $data['barang'] = $this->barang->getBarang();
-        return view('barang.cetak',$data);
     }
 }

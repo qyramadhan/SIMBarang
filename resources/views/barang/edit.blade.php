@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inventory - Edit Data Barang')
+@section('title', 'Inventory - Edit Data Kategori')
 
 @section('content')
 
@@ -16,7 +16,7 @@
                 <div>
                     <h1 class="page-title">Barang</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{url ('/lantai')}}">Management Barang</a></li>
+                        <li class="breadcrumb-item"><a href="{{url ('/ruang')}}">Management Barang</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Barang</li>
                     </ol>
                 </div>
@@ -24,14 +24,14 @@
             <!-- PAGE-HEADER END -->
             
             @if (count($errors) > 0)
-                <div class="mb-3alert alert-danger">
-                    <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+            <div class="mb-3 alert alert-danger">
+                <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
             @endif
             <!-- ROW-1 OPEN -->
             <div class="row">
@@ -48,36 +48,36 @@
                                 <form action="{{ url('barang/update') }}" method="POST">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
+                                        <label class="mg-b-0 tx-semibold">Kode Barang</label>
+                                    </div>
+                                    <div class="col-md-9 mg-t-5 mg-md-t-0">
+                                        <input type="text" name="kode_barang" class="form-control" placeholder="Kode Barang" value="{{ $barang->kode_barang }}"> 
+                                    </div>
+                                </div>
+
+                                <div class="row row-xs align-items-center mb-4">
+                                    <div class="col-md-3">
                                         <label class="mg-b-0 tx-semibold">Nama Barang</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang" value="{{ $barang->nama_barang }}"> 
+                                        <input type="text" name="nama_barang" class="form-control" placeholder="Nama Barang" value="{{ $barang->nama_barang }}">
                                     </div>
                                 </div>
 
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Tanggal Pembelian</label>
-                                    </div>
-                                    <div class="col-md-2 mg-t-5 mg-md-t-0">
-                                        <input type="date" name="tgl_pembelian" class="form-control" value="{{ date('Y-m-d', strtotime($barang->tgl_pembelian)) }}">
-                                    </div>
-                                </div>
-
-                                <div class="row row-xs align-items-center mb-4">
-                                    <div class="col-md-3">
-                                        <label class="mg-b-0 tx-semibold">Nama Kategori</label>
+                                        <label class="mg-b-0 tx-semibold">Nama Jenis</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <select class="form-control" name="nama_kategori">
-                                            @foreach ($kategori as $v)
+                                        <select class="form-control" name="nama_jenis">
+                                            @foreach ($jenis as $v)
                                                 @php
                                                     $statusA = "";
-                                                    if($v->id_kategori == $barang->id_kategori){
+                                                    if($v->id_jenis == $barang->id_jenis){
                                                         $statusA = "selected";
                                                     }
                                                 @endphp
-                                                <option value="{{ $v->id_kategori }}" {{ $statusA }}>{{ $v->nama_kategori }}</option>
+                                                <option value="{{ $v->id_jenis }}" {{ $statusA }}>{{ $v->nama_jenis }}</option>
                                             @endforeach
                                         </select>
                                     </div>

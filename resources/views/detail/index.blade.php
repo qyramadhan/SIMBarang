@@ -27,6 +27,16 @@
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
                     </a>
+                    <a href="{{ url('detail/cetak',$id_kartu) }}" target="_blank" class="btn btn-success btn-icon text-white btn-sm">
+                        <span>
+                            <i class="fa fa-print"></i>
+                        </span> Cetak Label
+                    </a>
+                    <a href="{{ url('detail/cetakkartu',$id_kartu) }}" target="_blank" class="btn btn-success btn-icon text-white btn-sm">
+                        <span>
+                            <i class="fa fa-print"></i>
+                        </span> Cetak Kartu
+                    </a>
                     @endcan
                 </div>
             </div>
@@ -49,7 +59,9 @@
                 <div class="col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Detail Kartu Barang</h3>
+                            @foreach($detail->take(1) as $value)
+                                <h3 class="card-title">Data Detail Kartu Barang {{ $value->nama_ruang }}</h3>
+                            @endforeach
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -57,9 +69,11 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p">No</th>
+                                            <th class="wd-15p">Kode Barang</th>
                                             <th class="wd-15p">Nama Barang</th>
                                             <th class="wd-15p">Jumlah Barang</th>
                                             <th class="wd-15p">Kondisi Barang</th>
+                                            <th class="wd-15p">Tahun Pembelian</th>
                                             <th class="wd-15p">Keterangan Barang</th>
                                             <th class="wd-20p">Action</th>
                                         </tr>
@@ -67,13 +81,40 @@
                                     <tbody>
                                         @foreach ($detail as $key => $value)
                                             <tr>
+                                                @php
+                                                    $txt = $value->no_urut;
+                                                    $no  = (int) $txt;
+                                                    $number = NULL;
+
+                                                    if($no <= 9){
+                                                        $number = "0-0-".$no;
+                                                    }elseif($no >= 10 && $no <= 99 ){
+                                                        $number = "0-".substr($no,0,1).'-'.substr($no,1,1);
+                                                    }elseif($no >= 100 && $no <= 999 ){
+                                                        $number = substr($no,0,1).'-'.substr($no,1,1).'-'.substr($no,2,1);
+                                                    }elseif($no >= 1000){
+                                                        $number = substr($no,0,1).'-'.substr($no,1,1).'-'.substr($no,2,1).'-'.substr($no,3,1);
+                                                    }
+                                                @endphp
+
                                                 <td>{{ ++$key }}</td>
+                                                <td>{{ $value->kode_golongan.'-'.$value->kode_jenis.'-'.$value->kode_barang.'-'.$number.'-'.substr($value->tahun,2).'-'.$value->kode_lantai.'-'.$value->kode_ruang.'-'.$value->kode_anggaran }}</td>
                                                 <td>{{ $value->nama_barang }}</td>
                                                 <td>{{ $value->jumlah_barang }}</td>
-                                                <td>{{ $value->kondisi_barang }}</td>
-                                                <td>{{ $value->keterangan }}</td>
                                                 <td>
-                                                    <a class="btn btn-success btn-sm" href="{{ url('detail/cetak',$value->id_detailkartu) }}" ><i class="fa fa-print"></i></a>
+                                                    @if ($value->kondisi_barang == 1)
+                                                        Baik
+                                                    @elseif($value->kondisi_barang == 2)
+                                                        Kurang Baik
+                                                    @else
+                                                        Rusak
+                                                    @endif
+                                                </td>
+                                                <td>{{ $value->tahun }}</td>
+                                                <td>{{ $value->keterangan }}</td>
+                                                
+                                                <td>
+                                                    {{-- <a class="btn btn-success btn-sm" href="{{ url('detail/cetakpersatu',$value->id_detailkartu) }}" ><i class="fa fa-print"></i></a> --}}
                                                     <a class="btn btn-primary btn-sm" href="{{ url('detail/edit',$value->id_detailkartu) }}" ><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
                                                 </td>
@@ -145,7 +186,14 @@
                                 </div>
                             </div>
 
-                         
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">No Urut Barang</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <input type="text" name="no_urut" class="form-control" placeholder="No Urut Barang">
+                                </div>
+                            </div>
 
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-4">
@@ -158,18 +206,45 @@
 
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-4">
-                                 <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
+                                    <label class="mg-b-0 tx-semibold">Kondisi Barang</label>
                                 </div>
                                 <div class="col-md-12 mg-t-5 mg-md-t-0">
                                     <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" name="kondisi_barang" class="form-control">
-                                    <option selected disabled>Pilih kondisi Barang</option>
-                                        <option value="Baik">Baik</option>
-                                        <option value="Kurang Baik">Kurang Baik</option>
-                                        <option value="Rusak">Rusak</option>
+                                    <option selected disabled>Pilih Kondisi Barang</option>
+                                        <option value="1">Baik</option>
+                                        <option value="2">Kurang Baik</option>
+                                        <option value="3">Rusak</option>
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">Tahun Pembelian</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" name="id_tahun" required>
+                                    <option selected disabled>Pilih Tahun</option>    
+                                    @foreach ($tahun as $value)
+                                            <option value="{{ $value->id_tahun }}">{{ $value->tahun }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row row-xs align-items-center mb-4">
+                                <div class="col-md-4">
+                                    <label class="mg-b-0 tx-semibold">Sumber Anggaran</label>
+                                </div>
+                                <div class="col-md-12 mg-t-5 mg-md-t-0">
+                                    <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" name="id_anggaran" required>
+                                    <option selected disabled>Pilih Tahun</option>    
+                                    @foreach ($anggaran as $value)
+                                            <option value="{{ $value->id_anggaran }}">{{ $value->nama_anggaran }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                            
                             <div class="row row-xs align-items-center mb-4">
                                 <div class="col-md-4">

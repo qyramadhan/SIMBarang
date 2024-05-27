@@ -27,26 +27,19 @@
                             <i class="fe fe-plus"></i>
                         </span> Tambah Data
                     </a>
-                    <a href="{{ url('barang/cetak') }}" target="_blank" class="btn btn-success btn-icon text-white btn-sm">
-                        <span>
-                            <i class="fa fa-print"></i>
-                        </span> Cetak Data
-                    </a>
                     @endcan
                 </div>
             </div>
-
-            @if ($message = Session::get('success'))
-            <div class="col-md-12 col-md-offset-12 mb-3 alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-            @elseif ($message = Session::get('failed'))
-            <div class="mb-3 alert alert-warning">
-                <p>{{ $message }}</p>
-            </div>
-            @endif
-            
         </div>
+        @if ($message = Session::get('success'))
+        <div class="mb-3 alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @elseif ($message = Session::get('failed'))
+        <div class="mb-3 alert alert-warning">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
             <!-- PAGE-HEADER END -->
 
             <!-- ROW-1 OPEN -->
@@ -62,9 +55,10 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p">No</th>
+                                            <th class="wd-15p">Kode Barang</th>
                                             <th class="wd-15p">Nama Barang</th>
-                                            <th class="wd-15p">Tanggal Pembelian</th>
-                                            <th class="wd-15p">Kategori</th>
+                                            <th class="wd-15p">Nama Jenis</th>
+                                            <th class="wd-15p">Nama Golongan</th>
                                             <th class="wd-20p">Action</th>
                                         </tr>
 
@@ -73,9 +67,10 @@
                                         @foreach ($barang as $key => $value)
                                         <tr>
                                             <td>{{ ++$key }}</td>
+                                            <td>{{ $value->kode_barang }}</td>
                                             <td>{{ $value->nama_barang }}</td>
-                                            <td>{{ $value->tgl_pembelian->translatedFormat('d-m-Y')}} </td>
-                                            <td>{{ $value->nama_kategori }}</td>
+                                            <td>{{ $value->nama_jenis }}</td>
+                                            <td>{{ $value->nama_golongan }}</td>
                                             </td>
                                             <td>
                                                 <a class="btn btn-primary btn-sm" href="{{ url('barang/edit',$value->id_barang) }}"><i class="fa fa-edit"></i></a>
@@ -110,7 +105,7 @@
                         <span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah anda yakin untuk menghapus data?</p>
+                    <p>Apakah anda yakin untuk menghapus data?.</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_barang" id="id_barang_delete">
@@ -130,19 +125,19 @@
 
 @section('js')
 <!-- INTERNAL  DATA TABLE JS-->
-<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/datatable.js') }}"></script>
+<script src="../assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+<script src="../assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+<script src="../assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+<script src="../assets/plugins/datatable/js/jszip.min.js"></script>
+<script src="../assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+<script src="../assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+<script src="../assets/plugins/datatable/js/buttons.html5.min.js"></script>
+<script src="../assets/plugins/datatable/js/buttons.print.min.js"></script>
+<script src="../assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+<script src="../assets/plugins/datatable/dataTables.responsive.min.js"></script>
+<script src="../assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
+<script src="../assets/plugins/datatable/datatable.js"></script>
 
 <script>
     $('#exampleModal').on('show.bs.modal', function (e) {

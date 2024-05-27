@@ -55,8 +55,8 @@
                             <li class="side-menu-label1"><a href="javascript:void(0);"> Barang</a></li>
                             <li><a class="slide-item" href="{{ url('/golongan') }}">Golongan</a></li>
                             <li><a class="slide-item" href="{{ url('/jenis') }}">Jenis</a></li>
-                            <li><a class="slide-item" href="{{ url('/kategori') }}">Kategori</a></li>
                             <li><a class="slide-item" href="{{ url('/barang') }}">Barang</a></li>
+                           
                         </ul>
                     </li>
                     <li class="slide">
