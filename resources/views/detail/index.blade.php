@@ -1,7 +1,35 @@
 @extends('layouts.app')
 
 @section('title','Inventory - Management Detail Kartu Barang')
-
+@section('css')
+<style>
+    .textbox-container {
+        margin-top: 10px;
+    }
+    
+    .textbox-container input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .textbox-container input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+    .radio-options {
+        display: block;
+        gap: 50px;
+    }
+    
+    .radio-options input[type="radio"] {
+        margin-right: 10px;
+    }
+    </style>
+@endsection
 @section('content')
 
 <!--app-content open-->
@@ -59,9 +87,7 @@
                 <div class="col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            @foreach($detail->take(1) as $value)
-                                <h3 class="card-title">Data Detail Kartu Barang {{ $value->nama_ruang }}</h3>
-                            @endforeach
+                            <h3 class="card-title">Data Detail Kartu Barang {{ $info->nama_ruang }}</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -71,7 +97,6 @@
                                             <th class="wd-15p">No</th>
                                             <th class="wd-15p">Kode Barang</th>
                                             <th class="wd-15p">Nama Barang</th>
-                                            <th class="wd-15p">Jumlah Barang</th>
                                             <th class="wd-15p">Kondisi Barang</th>
                                             <th class="wd-15p">Tahun Pembelian</th>
                                             <th class="wd-15p">Keterangan Barang</th>
@@ -98,9 +123,11 @@
                                                 @endphp
 
                                                 <td>{{ ++$key }}</td>
-                                                <td>{{ $value->kode_golongan.'-'.$value->kode_jenis.'-'.$value->kode_barang.'-'.$number.'-'.substr($value->tahun,2).'-'.$value->kode_lantai.'-'.$value->kode_ruang.'-'.$value->kode_anggaran }}</td>
+                                                {{-- @php
+                                                    $no_urut = App\Http\Controllers\DetailKartuController::getUrutBarang($value->id_kartu, $value->id_barang, $value->id_tahun, $value->id_anggaran, $value->kondisi_barang)
+                                                @endphp --}}
+                                                <td>{{ $value->kode_golongan.' | '.$value->kode_jenis.' | '.$value->kode_barang.' | '.$number.' | '.substr($value->tahun,2).' | '.$value->kode_lantai.' | '.$value->kode_ruang.' | '.$value->kode_anggaran }}</td>
                                                 <td>{{ $value->nama_barang }}</td>
-                                                <td>{{ $value->jumlah_barang }}</td>
                                                 <td>
                                                     @if ($value->kondisi_barang == 1)
                                                         Baik
@@ -114,7 +141,6 @@
                                                 <td>{{ $value->keterangan }}</td>
                                                 
                                                 <td>
-                                                    {{-- <a class="btn btn-success btn-sm" href="{{ url('detail/cetakpersatu',$value->id_detailkartu) }}" ><i class="fa fa-print"></i></a> --}}
                                                     <a class="btn btn-primary btn-sm" href="{{ url('detail/edit',$value->id_detailkartu) }}" ><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $value->id_detailkartu }}"><i class="fa fa-trash"></i></button>
                                                 </td>
@@ -179,28 +205,36 @@
                                 <div class="col-md-12 mg-t-5 mg-md-t-0">
                                     <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" name="id_barang" required>
                                     <option selected disabled>Pilih Barang</option>    
-                                    @foreach ($barang as $value)
+                                        @foreach ($barang as $value)
                                             <option value="{{ $value->id_barang }}">{{ $value->nama_barang }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="row row-xs align-items-center mb-4">
+                            <div class="row row-xs align-items-center">
                                 <div class="col-md-4">
                                     <label class="mg-b-0 tx-semibold">No Urut Barang</label>
                                 </div>
                                 <div class="col-md-12 mg-t-5 mg-md-t-0">
-                                    <input type="text" name="no_urut" class="form-control" placeholder="No Urut Barang">
+                                    <div class="radio-options">
+                                        <input type="radio" id="option1" name="no_urut" value="0" onclick="showTextBox('option1')">
+                                        <label for="option1">Data Tunggal</label>
+                                        
+                                        <input type="radio" id="option2" name="no_urut" value="1" onclick="showTextBox('option2')">
+                                        <label for="option2">Data Masal</label>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="row row-xs align-items-center mb-4">
-                                <div class="col-md-4">
-                                    <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
+                            <div id="tunggal" style="display: none" class="row col-md-12">
+                                <input id="urut" type="text" name="tunggal" class="form-control" placeholder="Dari">
+                            </div>
+                            <div id="masal" style="display: none" class="row">
+                                <div class="col-md-6">
+                                    <input id="urut" type="text" name="dari" class="form-control" placeholder="Dari">
                                 </div>
-                                <div class="col-md-12 mg-t-5 mg-md-t-0">
-                                    <input type="text" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang">
+                                <div class="col-md-6">
+                                    <input id="urut" type="text" name="sampai" class="form-control" placeholder="Sampai">
                                 </div>
                             </div>
 
@@ -238,10 +272,10 @@
                                 </div>
                                 <div class="col-md-12 mg-t-5 mg-md-t-0">
                                     <select class="form-control select2-show-search" data-placeholder="Choose one (with searchbox)" name="id_anggaran" required>
-                                    <option selected disabled>Pilih Tahun</option>    
+                                    <option selected disabled>Pilih Anggaran</option>    
                                     @foreach ($anggaran as $value)
-                                            <option value="{{ $value->id_anggaran }}">{{ $value->nama_anggaran }}</option>
-                                        @endforeach
+                                        <option value="{{ $value->id_anggaran }}">{{ $value->nama_anggaran }}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -266,9 +300,6 @@
             </form>
         </div>
     </div>
-
-
-
 
 @endsection
 
@@ -302,5 +333,14 @@
         $("#id_detail_simpan").val(id);
     });
 
+    function showTextBox(option) {
+        if (option === 'option1') {
+            $('#tunggal').show();
+            $('#masal').hide();
+        } else if (option === 'option2') {
+            $('#tunggal').hide();
+            $('#masal').show();
+        }
+    }
 </script>
 @endsection

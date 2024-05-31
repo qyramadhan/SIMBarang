@@ -31,6 +31,14 @@
                 </div>
             </div>
         </div>
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div>{{$error}}</div>
+            @endforeach
+        @endif
+
+        
         @if ($message = Session::get('success'))
         <div class="mb-3 alert alert-success">
             <p>{{ $message }}</p>

@@ -1,7 +1,36 @@
 @extends('layouts.app')
 
 @section('title', 'Inventory - Edit Data Detail Kartu Barang')
-
+@section('css')
+<style>
+    .textbox-container {
+        margin-top: 10px;
+    }
+    
+    .textbox-container input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .textbox-container input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+    .radio-options {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .radio-options input[type="radio"] {
+        margin-right: 5px;
+    }
+    
+    </style>
+@endsection
 @section('content')
 
 <!--app-content open-->
@@ -51,7 +80,7 @@
                                             <label class="mg-b-0 tx-semibold">Nama Barang</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <select class="form-control" name="id_barang">
+                                            <select class="form-control" name="id_barang" readonly>
                                                 @foreach ($barang as $v)
                                                     @php
                                                         $statusA = "";
@@ -70,16 +99,7 @@
                                             <label class="mg-b-0 tx-semibold">No Urut Barang</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <input type="text" name="no_urut" class="form-control" placeholder="No Urut Barang" value="{{ $detail->no_urut }}"> 
-                                        </div>
-                                    </div>
-
-                                    <div class="row row-xs align-items-center mb-4">
-                                        <div class="col-md-3">
-                                            <label class="mg-b-0 tx-semibold">Jumlah Barang</label>
-                                        </div>
-                                        <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <input type="text" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang" value="{{ $detail->jumlah_barang }}"> 
+                                            <input type="text" name="no_urut" class="form-control" placeholder="No Urut Barang" value="{{ $detail->no_urut }}" readonly> 
                                         </div>
                                     </div>
 
@@ -102,7 +122,7 @@
                                             <label class="mg-b-0 tx-semibold">Tahun Pembelian</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <select class="form-control" name="id_tahun">
+                                            <select class="form-control" name="id_tahun" readonly>
                                                 @foreach ($tahun as $v)
                                                     @php
                                                         $statusA = "";
@@ -121,7 +141,7 @@
                                             <label class="mg-b-0 tx-semibold">Sumber Anggaran</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <select class="form-control" name="id_anggaran">
+                                            <select class="form-control" name="id_anggaran" readonly>
                                                 @foreach ($anggaran as $v)
                                                     @php
                                                         $statusA = "";
@@ -140,7 +160,7 @@
                                             <label class="mg-b-0 tx-semibold">Keterangan</label>
                                         </div>
                                         <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                            <input type="text" name="keterangan" class="form-control" placeholder="Keterangan" value="{{ $detail->keterangan }}"> 
+                                            <input type="text" name="keterangan" class="form-control" placeholder="Keterangan" value="{{ $detail->keterangan }}" readonly> 
                                         </div>
                                     </div>
 
@@ -173,5 +193,15 @@
 
 @endsection
 @section('js')
-
+<script>
+    function showTextBox(option) {
+        if (option === 'option1') {
+            $('#tunggal').show();
+            $('#masal').hide();
+        } else if (option === 'option2') {
+            $('#tunggal').hide();
+            $('#masal').show();
+        }
+    }
+</script>
 @endsection

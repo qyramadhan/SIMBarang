@@ -45,10 +45,8 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <h6 style="text-align: center;"> KARTU INVENTARIS BARANG </h6><br>
-                            @foreach($detail->take(1) as $value)
-                            <h6> LOKASI : {{ $value->nama_lantai }}</h6>
-                            <h6> RUANG  : {{ $value->nama_ruang }}</h6>
-                            @endforeach
+                            <h6> LOKASI : {{ $info->nama_lantai }}</h6>
+                            <h6> RUANG  : {{ $info->nama_ruang }}</h6>
                             <table class="tg">
                                 <thead>
                                     <tr>
@@ -65,20 +63,26 @@
                                         <th class="tg-0lax">RB</th>
                                     </tr>
                                 </thead>
-                                @foreach($detail as $key => $value)
+                                @foreach($cetak as $key => $value)
                                 <tbody>
                                     <tr>
                                         <td class="tg-0lax">{{ ++$key }}<</td>
                                         <td class="tg-0lax">{{ $value->kode_golongan }}</td>
                                         <td class="tg-0lax">{{ $value->kode_jenis }}</td>
                                         <td class="tg-0lax">{{ $value->kode_barang }}</td>
-                                        <td class="tg-0lax">{{ $value->no_urut }}</td>
-                                        <td class="tg-0lax">{{ substr($value->tahun,2) }}</td>
+                                        @php
+                                            $no_urut = App\Http\Controllers\DetailKartuController::getUrutBarang($value->id_kartu, $value->id_barang, $value->id_tahun, $value->id_anggaran, $value->kondisi_barang)
+                                        @endphp
+                                        <td class="tg-0lax">{{ $no_urut }}</td>
+                                        <td class="tg-0lax">{{ substr($value->tahun, 2) }}</td>
                                         <td class="tg-0lax">{{ $value->kode_lantai }}</td>
                                         <td class="tg-0lax">{{ $value->kode_ruang }}</td>
                                         <td class="tg-0lax">{{ $value->kode_anggaran }}</td>
                                         <td class="tg-0lax">{{ $value->nama_barang }}</td>
-                                        <td class="tg-0lax">{{ $value->jumlah_barang }}</td>
+                                        @php
+                                            $count = App\Http\Controllers\DetailKartuController::getTotalBarang($value->id_kartu, $value->id_barang, $value->id_tahun, $value->id_anggaran, $value->kondisi_barang)
+                                        @endphp
+                                        <td class="tg-0lax">{{ $count }}</td>
                                         <td class="tg-0lax"> 
                                             @if ($value->kondisi_barang == 1)
                                                 V
@@ -112,13 +116,22 @@
                                 Pencatat Barang
                             </div><br><br><br><br>
                             <div style="clear: both;"></div>
-                            <div style="font-family:sans-serif; width: 50%; float: left; padding-left: 30px;"> 
-                                Dewi Wijayanti, S.Sos
+                                @php
+                                    $results = DB::table('tb_setting')->where('id_atasan', '=', 0)->get('nama_orang');
+                                @endphp
+                            <div style="width: 50%; float: left; padding-left: 30px;"> 
+                                @foreach($results as $result)
+                                    {{ $result->nama_orang }}
+                                @endforeach
                             </div>
-                            <div style="font-family:sans-serif; width: 50%; float: left; padding-left: 270px;"> 
-                                Yudha Rahadianto
+                                @php
+                                    $result = DB::table('tb_setting')->where('id_atasan', '!=', 0)->get('nama_orang');
+                                @endphp
+                            <div style="width: 50%; float: left; padding-left: 270px;"> 
+                                @foreach($result as $results)
+                                    {{ $results->nama_orang }}
+                                @endforeach
                             </div>
-                            <div style="clear: both;"></div>
                         </div>
                     </div>
                 </div>

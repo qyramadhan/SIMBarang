@@ -67,7 +67,7 @@
                                 @endforeach
                                 <div class="form-group row mb-0 mt-3">
                                     <div class="col-md-9">
-                                        <button type="submit" class="btn ripple btn-primary btn-sm">Submit</button>
+                                        <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
                                         <a class="btn ripple btn-secondary btn-sm" href="{{ route('roles.index') }}">Kembali</a>
                                     </div>
                                 </div>

@@ -45,7 +45,7 @@
 
                         <div class="card-body">
                             <div class="form-content">
-                                <form action="{{ route('users.update', $user->id) }}">
+                                <form action="{{ route('users.update', ['id' => $user->id]) }}" method="POST">
                                 <div class="row row-xs align-items-center mb-4">
                                     <div class="col-md-3">
                                         <label class="mg-b-0 tx-semibold">Name</label>
@@ -69,7 +69,7 @@
                                         <label class="mg-b-0 tx-semibold">Username</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="text" name="email" class="form-control" placeholder="Username" value="{{ $user->username }}">
+                                        <input type="text" name="username" class="form-control" placeholder="Username" value="{{ $user->username }}">
                                     </div>
                                 </div>
                         
@@ -87,7 +87,7 @@
                                         <label class="mg-b-0 tx-semibold">Confirm Password</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <input type="password" name="confirm-password" class="form-control" placeholder="Konfirmasi Password">
+                                        <input type="password" name="confirm_password" class="form-control" placeholder="Konfirmasi Password">
                                     </div>
                                 </div>
                         
@@ -96,7 +96,7 @@
                                         <label class="mg-b-0 tx-semibold">Role</label>
                                     </div>
                                     <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                        <select class="form-control" name="roles[]">
+                                        <select class="form-control" name="roles">
                                             @foreach ($roles as $v)
                                                 <option value="{{ $v }}" {{ in_array($v, $userRole) ? "selected" : "" }}>{{ $v }}</option>
                                             @endforeach
@@ -104,6 +104,7 @@
                                     </div>
                                     <div class="form-group row justify-content-end mb-0 mt-5">
                                         <div class="col-md-9">
+                                            @csrf
                                             <button type="submit" class="btn ripple btn-primary btn-sm">Simpan</button>
                                             <a class="btn ripple btn-secondary btn-sm" href="{{ route('users.index') }}">Kembali</a>
                                         </div>

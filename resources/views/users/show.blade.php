@@ -41,15 +41,6 @@
 										@endforeach
 										@endif
 								</div>
-								<div class="row">
-									<div class="col-xl-6">
-										<div class="profile-tabs">
-											<nav class="nav nav-pills flex-column flex-sm-row pt-4">
-												<a class="nav-link active" data-bs-toggle="tab" href="#edit">Detail User</a>
-											</nav>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -83,7 +74,7 @@
 												<label class="mb-0 text-muted">
 													@if(!empty($user->getRoleNames()))
 													@foreach($user->getRoleNames() as $v)
-													<label class="label label-success">{{ $v }}</label>
+														<label class="label label-success">{{ $v }}</label>
 													@endforeach
 													@endif
 												</label>
@@ -106,6 +97,8 @@
 												</div>
 											</div>
 									<div class="card-body">
+										@csrf
+										<a class="btn ripple btn-primary btn-sm" href="{{ route('users.edit',$user->id) }}">Edit</a>
 										<a class="btn ripple btn-secondary btn-sm" href="{{ route('users.index') }}">Kembali</a>
 									</div>
 								</div>

@@ -23,13 +23,13 @@
             table-layout: fixed;
             word-wrap: break-word;
         }
-        .table img {
+        /* .table img {
             display: block;
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
-        }
+        } */
         .table td {
             text-align: center;
             vertical-align: middle;
@@ -69,11 +69,11 @@
         <div class="side-app">
             <div class="main-container container-fluid">
                 <div class="row">
-                    <div class="col-md-12 col-lg-12">
+                    <div class="col-md-6 col-lg-6">
                         <div class="card-body">
                             <div class="table-responsive">
                                 @foreach($detail as $value)
-                                    <table class="table table-bordered text-nowrap w-100 mb-4" style="margin-bottom: 20px;">
+                                    <table class="table table-bordered text-nowrap mb-4" style="margin-bottom: 20px;">
                                         @php
                                             $txt = $value->no_urut;
                                             $no  = (int) $txt;
@@ -91,12 +91,12 @@
                                         @endphp
                                     <thead>
                                     <tr>
-                                        <td rowspan="2" class="logo-cell">
-                                            <img src="{{ public_path('assets/images/brand/unperba.png') }}" alt="Logo Universitas">
+                                        <td rowspan="2" colspan="2" class="logo-cell" style="padding: 4px;">
+                                            <img src="{{ public_path('assets/images/brand/unperba.png') }}" alt="Logo Universitas" width="80px;">
                                         </td>
-                                        <td colspan="10" class="title-cell card-title middle">Universitas Perwira Purbalingga</td>
-                                        <td rowspan="2" class="logo-cell">
-                                            <img src="data:image/png;base64, {!! base64_encode(QrCode::size(1000)->generate(
+                                        <td colspan="10" class="title-cell card-title middle">Inventaris Universitas Perwira Purbalingga</td>
+                                        <td rowspan="2" colspan="2" class="logo-cell" style="padding: 4px;">
+                                            <img src="data:image/png;base64, {!! base64_encode(QrCode::size(1500)->generate(
                                                 $value->nama_golongan . "\n" .
                                                 $value->nama_jenis . "\n" .
                                                 $value->nama_barang . "\n" .
@@ -105,7 +105,7 @@
                                                 $value->nama_lantai . "\n" .
                                                 $value->nama_ruang . "\n" .
                                                 $value->nama_anggaran
-                                                )) !!}" />
+                                                )) !!}"/>
                                         </td>
                                         </tr>
                                         <tr>

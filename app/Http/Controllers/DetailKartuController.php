@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use Session;
+use DB;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DetailKartuController extends Controller
@@ -37,11 +38,13 @@ class DetailKartuController extends Controller
     public function index($id_kartu)
     {
         $data['detail']     = $this->detail->getDetail($id_kartu);
+        $data['info']       = $this->detail->getInfoDetail($id_kartu);
         $data['barang']     = $this->detail->getDataBarang();
         $data['tahun']      = $this->tahun->getTahun();
         $data['anggaran']   = $this->anggaran->getAnggaran();
         $data['id_kartu']   = $id_kartu;
         return view('detail.index', $data);
+        
     }
 
     public function create()
@@ -111,10 +114,42 @@ class DetailKartuController extends Controller
     }
     public function cetakkartu($id_kartu)
     {
-        $data['detail'] = $this->detail->getDetail($id_kartu);  
+        $data['info']       = $this->detail->getInfoDetail($id_kartu);
+        $data['cetak']      = $this->detail->getCetak($id_kartu);  
         $pdf = PDF::loadView('detail.cetakkartu',$data)->setPaper('a4', 'landscape');
     	return $pdf->stream('cetak_kartu.pdf');
         // $data['detail'] = $this->detail->getDetail($id_kartu);
         // return view('detail.cetakkartu',$data);
+    }
+
+    public static function getUrutBarang($id_kartu, $id_barang, $id_tahun, $id_anggaran,$kondisi_barang)
+    {
+        $data = DB::table('tb_detailkartu')
+            ->where('id_kartu', $id_kartu)
+            ->where('id_barang', $id_barang)
+            ->where('id_tahun', $id_tahun)
+            ->where('id_anggaran', $id_anggaran)
+            ->where('kondisi_barang', $kondisi_barang)
+            ->get();
+
+            $no_urut = "";
+            foreach ($data as $key => $value) {
+                $no_urut .= $value->no_urut.',';
+            }
+
+            return substr($no_urut,0, -1);;
+    }
+
+    public static function getTotalBarang($id_kartu, $id_barang, $id_tahun, $id_anggaran, $kondisi_barang)
+    {
+        $count = DB::table('tb_detailkartu')
+            ->where('id_kartu', $id_kartu)
+            ->where('id_barang', $id_barang)
+            ->where('id_tahun', $id_tahun)
+            ->where('id_anggaran', $id_anggaran)
+            ->where('kondisi_barang', $kondisi_barang)
+            ->count();
+
+            return $count;
     }
 }

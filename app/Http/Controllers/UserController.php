@@ -13,7 +13,7 @@ use DB;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -51,14 +51,14 @@ class UserController extends Controller
             'password'  => 'required|same:confirm-password',
             'roles'     => 'required',
         ]);
-    
+        
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('users.index')->with('success','User Berhasil Dibuat!');
+        
+        return redirect()->route('users.index')->with('success','User berhasil dibuat!');
     }
     
     /**
@@ -101,7 +101,7 @@ class UserController extends Controller
             'name'      => 'required',
             'email'     => 'required|email|unique:users,email,'.$id,
             'username'  => 'required',
-            'password'  => 'same:confirm-password',
+            'password'  => 'required|same:confirm_password',
             'roles'     => 'required',
         ]);
     
@@ -118,7 +118,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')->with('success','User Berhasil Diupdate!');
+        return redirect()->route('users.index')->with('success','User berhasil diupdate!');
     }
     
     /**
@@ -130,7 +130,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')->with('success','User Berhasil Dihapus!');
+        return redirect()->route('users.index')->with('success','User berhasil dihapus!');
     }
 
 

@@ -22,7 +22,7 @@
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-            @if (count($errors) > 0)
+            {{-- @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Ups!</strong> Terdapat beberapa masalah dengan masukan Anda.<br><br>
                     <ul>
@@ -31,7 +31,14 @@
                     @endforeach
                     </ul>
                 </div>
+            @endif --}}
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div>{{$error}}</div>
+                @endforeach
             @endif
+
             <!-- ROW-1 OPEN -->
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -95,7 +102,7 @@
                                     <label class="mg-b-0 tx-semibold">Role</label>
                                 </div>
                                 <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                    <select class="form-control form-select select2" id="roles" name="roles_id" data-placeholder="Select">
+                                    <select class="form-control form-select select2" id="roles" name="roles" data-placeholder="Select">
                                         @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                      @endforeach
