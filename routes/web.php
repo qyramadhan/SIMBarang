@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     
+    Route::get('/users/show/{id}', 'UserController@show')->name('users.show');
     Route::post('/users/update/{id}', 'UserController@update')->name('users.update');
     Route::post('/user/delete', 'UserController@deleteUser');
     Route::post('/roles/delete', 'RoleController@deleteRole');

@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('users.show',compact('user'));
     }
     
@@ -143,6 +143,16 @@ class UserController extends Controller
             Session::flash('failed','User gagal dihapus, silahkan coba lagi !');
             return redirect('users');
         }
+    }
+
+    public static function getId($id)
+    {
+        $data = DB::table('users')
+            ->select("users.*")
+            ->where('id', $id)
+            ->get();
+
+            return $data;
     }
 
 }

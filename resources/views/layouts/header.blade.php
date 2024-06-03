@@ -34,7 +34,11 @@
 													class="avatar profile-user brround cover-image">
 											</a>
 											<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-												<a class="dropdown-item" href="profile.html">
+												@php
+													$userId = auth()->id();
+													$user = App\User::find($userId);
+												@endphp
+												<a class="dropdown-item" href="{{ route('users.show',$userId) }}">
 													<i class="dropdown-icon mdi mdi-account-outline"></i> Profil
 												</a>
 												<a class="dropdown-item" href="{{ url('logout') }}">

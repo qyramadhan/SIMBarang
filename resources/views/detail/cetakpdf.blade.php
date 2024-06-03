@@ -22,6 +22,7 @@
             width: 100%;
             table-layout: fixed;
             word-wrap: break-word;
+            border-collapse: collapse;
         }
         /* .table img {
             display: block;
@@ -33,9 +34,10 @@
         .table td {
             text-align: center;
             vertical-align: middle;
+            border: 1px, solid black;
         }
         .table, .table th, .table td {
-            border: 1px solid black;
+            border: 1px solid black !important;
         }
         .table .logo-cell {
             padding: 0;
@@ -59,7 +61,7 @@
             .table {
                 width: 100%;
                 margin: 0 auto;
-                border-collapse: collapse;
+                
             }
         }
     </style>
@@ -104,8 +106,7 @@
                                                 $value->tahun . "\n" .
                                                 $value->nama_lantai . "\n" .
                                                 $value->nama_ruang . "\n" .
-                                                $value->nama_anggaran
-                                                )) !!}"/>
+                                                $value->nama_anggaran )) !!}"/>
                                         </td>
                                         </tr>
                                         <tr>
@@ -113,7 +114,7 @@
                                             <td>{{ $value->kode_jenis }}</td>
                                             <td>{{ $value->kode_barang }}</td>
                                             @php
-                                                $numberStr = str_pad($number, 3, '0', STR_PAD_LEFT); // Pastikan angka selalu memiliki 3 digit
+                                                $numberStr = str_pad($number, 3, '0', STR_PAD_LEFT);
                                                 $digit1 = substr($numberStr, 0, 1);
                                                 $digit2 = substr($numberStr, 2, 1);
                                                 $digit3 = substr($numberStr, 4, 1);
