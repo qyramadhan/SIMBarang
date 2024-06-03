@@ -57,7 +57,6 @@ class DetailKartuController extends Controller
     {
         
         $this->validate ($request, [
-            'jumlah_barang'     => 'required',
             'kondisi_barang'    => 'required',
             'keterangan'        => 'required',
         ]);

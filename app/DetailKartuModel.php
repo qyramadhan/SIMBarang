@@ -23,7 +23,6 @@ class DetailKartuModel extends Model
                 $sv->id_tahun       = $request->id_tahun;
                 $sv->id_anggaran    = $request->id_anggaran;
                 $sv->no_urut        = $request->tunggal;
-                $sv->jumlah_barang  = $request->jumlah_barang;
                 $sv->kondisi_barang = $request->kondisi_barang;
                 $sv->keterangan     = $request->keterangan;
                 $sv->soft_delete    = FALSE;
@@ -58,7 +57,6 @@ class DetailKartuModel extends Model
                     $sv->id_tahun       = $request->id_tahun;
                     $sv->id_anggaran    = $request->id_anggaran;
                     $sv->no_urut        = $number;
-                    $sv->jumlah_barang  = $request->jumlah_barang;
                     $sv->kondisi_barang = $request->kondisi_barang;
                     $sv->keterangan     = $request->keterangan;
                     $sv->soft_delete    = FALSE;
@@ -248,7 +246,6 @@ class DetailKartuModel extends Model
                 'id_barang'             => $request->id_barang,
                 'id_tahun'              => $request->id_tahun,
                 'no_urut'               => $request->no_urut,
-                "jumlah_barang"         => $request->jumlah_barang,
                 "kondisi_barang"        => $request->kondisi_barang,
                 "keterangan"            => $request->keterangan,
                 "log_user2"             => Auth::user()->id,
